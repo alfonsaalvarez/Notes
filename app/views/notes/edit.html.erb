@@ -1,6 +1,24 @@
 <h1>Editing Note</h1>
 
-<%= render 'form', note: @note %>
+<!--<%= render 'form', note: @note %>-->
+
+<%= form_with(model: @note, local: true) do |form|%>
+  <div class="field">
+    By user: <%= @note.user.name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :text%>
+    <%= form.text_field :text %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
+
 
 <%= link_to 'Show', @note %> |
 <%= link_to 'Back', notes_path %>

@@ -27,6 +27,8 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
 
     respond_to do |format|
+      @note.user=User.find_by name: note_params[:user_id]
+
       if @note.save
         format.html { redirect_to @note, notice: 'Note was successfully created.' }
         format.json { render :show, status: :created, location: @note }
@@ -41,6 +43,7 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1.json
   def update
     respond_to do |format|
+      #@note.user=User.find_by name: note_params[:user_id]
       if @note.update(note_params)
         format.html { redirect_to @note, notice: 'Note was successfully updated.' }
         format.json { render :show, status: :ok, location: @note }
