@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'images/index'
+  get 'images/new'
+  get 'images/show'
   #resources :note_collections
   get 'session/new'
   get 'session/create'
@@ -10,6 +13,7 @@ Rails.application.routes.draw do
   get "login" => "session#new", :as => "login"
   post "login" => "session#create"
   get "signup" => "users#new", :as => "signup"
+  post 'images' => 'images#create'
   resources :users
   resources :session
   resources :notes
