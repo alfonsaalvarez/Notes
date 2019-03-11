@@ -2,4 +2,9 @@
 
 <%= render 'form', note: @note %>
 
+<!-- <%= form_for(:image, :url => {:action => 'create'}, :html => {:multipart => true}) do |f| %>
+  <%= f.file_field :image %>
+  <%= f.submit "Upload" %>
+<% end %> -->
+
 <%= link_to 'Back', notes_path %>
