@@ -1,14 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="wrapper_with_padding">
+  <div id="note_show">
+    <h1 class="title">
+      <%= @note.title %>
+    </h1>
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @note.text %>
-</p>
+	<p>
+	  <strong>Text:</strong>
+	  <%= @note.text %>
+	</p>
 
-<p>
-  <strong>User:</strong>
-  <%= @note.user.name %>
-</p>
+	<p>
+	  <strong>User:</strong>
+	  <%= @note.user.name %>
+	</p>
 
-<%= link_to 'Edit', edit_note_path(@note) %> |
-<%= link_to 'Back', notes_path %>
+	<%= link_to 'Edit', edit_note_path(@note), class: "button"  %> |
+	<%= link_to 'Back', notes_path, class: "button"  %>
+   </div>
+</div>
+
+

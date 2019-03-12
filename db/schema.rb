@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_11_081547) do
+ActiveRecord::Schema.define(version: 2019_03_11_184442) do
 
   create_table "images", force: :cascade do |t|
     t.string "image_file_name"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2019_03_11_081547) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 

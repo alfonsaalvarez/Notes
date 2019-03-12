@@ -7,9 +7,23 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+     <%= csrf_meta_tags %>
+	
   </head>
 
   <body>
+  <header>
+    <div class="header_inner">
+      <%= link_to image_tag('logo.jpg'), root_path, id: "logo" %>
+      <nav>
+	<%= link_to "New Note", new_note_path %>
+        
+      </nav>
+    </div>
+  </header>
+
+
     <%= yield %>
   </body>
 </html>

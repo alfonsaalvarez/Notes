@@ -1,3 +1,4 @@
+<div class=wrapper_with_padding>
 <h1>New Note</h1>
 
 <%= render 'form', note: @note %>
@@ -7,4 +8,5 @@
   <%= f.submit "Upload" %>
 <% end %> -->
 
-<%= link_to 'Back', notes_path %>
+<%= link_to 'Back', notes_path, class: "button"  %>
+</div>
