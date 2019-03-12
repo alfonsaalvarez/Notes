@@ -10,14 +10,20 @@
 	  <%= @note.text %>
 	</p>
 
+
 	<p>
 	  <strong>User:</strong>
 	  <%= @note.user.name %>
 	</p>
 
+  <!-- % if @note.image_id.exists ? %>
+    %= image_tag @note.image_id (:thumb) %>
+  % end %> -->
+
+  <img id="photo" src=@note.image_id
+    onerror="" alt="alt">
+
 	<%= link_to 'Edit', edit_note_path(@note), class: "button"  %> |
 	<%= link_to 'Back', notes_path, class: "button"  %>
    </div>
 </div>
-
-
