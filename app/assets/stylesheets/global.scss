@@ -25,8 +25,21 @@ body {
 
 .wrapper_with_padding {
 	width: 80%;
-	margin-top:100px;
+	margin-top:50px;
 	margin-left:12%;
+	margin-bottom:10%;
+	padding: 30px 50px 30px 50px;
+	border-radius: 50px;
+	font-size: 16px;
+	text-align:left;
+	background-color:#d2dce0;
+}
+
+
+.wrapper_with_padding2 {
+	width: 50%;
+	margin-top:50px;
+	margin-left:25%;
 	margin-bottom:10%;
 	padding: 30px 50px 30px 50px;
 	border-radius: 50px;
@@ -45,15 +58,21 @@ body {
 }
 
 button, .button {
-	border: 5px solid #1f292d;
+	border: 5px solid #455A64;
 	outline: none;
 	background: transparent;
-	padding: 1rem 3.5rem;
+	padding: 1rem 2rem;
 	border-radius: 2rem;
+	@include bold_font;
+	color: #455A64;
 	a {
 		color: #455A64;
 		text-decoration: none;
-		@include bold_font
+		@include bold_font;
+	}
+	&:hover {
+		background: #455A64;
+		color:white;
 	}
 }
 
@@ -61,7 +80,17 @@ button, .button {
 	color: #455A64;
 	background: white;
 	margin: 2rem 0;
-	@include bold_font
+	@include bold_font;
+
+	a {
+		color: #455A64;
+		text-decoration: none;
+		@include bold_font;
+	}
+	&:hover {
+		background: #455A64;
+		color:white;
+	}
 }
 
 a {
@@ -75,6 +104,14 @@ a {
 h1{
   color: #455A64;
   font-size:30px;
+}
+
+table{
+   margin-bottom:5%;
+}
+
+table, tr{
+     height:70px;
 }
 
 header {
@@ -93,7 +130,7 @@ header {
 			/*display: inline-block;
 			width: 2.25rem;
 			float: left;*/
-			margin:-7px;
+			margin:-19px;
 			display:block;
 		}
 		nav {

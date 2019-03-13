@@ -1,12 +1,13 @@
 <div class=wrapper_with_padding>
 <h1>New Note</h1>
-
 <%= render 'form', note: @note %>
+
+
+
 
 <!-- <%= form_for(:image, :url => {:action => 'create'}, :html => {:multipart => true}) do |f| %>
   <%= f.file_field :image %>
   <%= f.submit "Upload" %>
 <% end %> -->
 
-<%= link_to 'Back', notes_path, class: "button"  %>
 </div>

@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :text %>
-    <%= form.text_field :text %>
+    <%= form.text_area :text %>
   </div>
 
   <div class="field">
@@ -33,6 +33,7 @@
 
   <div class="actions">
     <%= form.submit "Save", class: "button"%>
+    <%= link_to 'Back', notes_path, class: "button"  %>
   </div>
 <% end %>
 

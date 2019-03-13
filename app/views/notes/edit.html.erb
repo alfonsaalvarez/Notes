@@ -3,12 +3,14 @@
 <div class=wrapper_with_padding>
 <!--<%= render 'form', note: @note %>-->
 	<h1>Editing Note</h1>
-	  <h1>
+	  
 
 	<%= form_with(model: @note, local: true) do |form|%>
-	  <div class="field">
-	    By user: <%= @note.user.name %>
-	  </div>
+
+	  <!--<div class="field">
+	    <%= form.label :user %>
+	    <%= @note.user.name %>
+	  </div>-->
 
 	  <div class="field">
 		<%= form.label :title%>
@@ -17,15 +19,21 @@
 
 	  <div class="field">
 	    <%= form.label :text%>
-	    <%= form.text_field :text %>
+	    <%= form.text_area :text %>
 	  </div>
+
+  <div class="field">
+    <%=form.label :image%>
+    <%= form.file_field :image %>
+  </div>
 
 	  <div class="actions">
 	    <%= form.submit "Save", class: "button" %>
+	    <%= link_to 'Back', notes_path, class: "button" %>
 	  </div>
 
 	<% end %>
 
 
-<%= link_to 'Back', notes_path, class: "button" %>
+
 </div>

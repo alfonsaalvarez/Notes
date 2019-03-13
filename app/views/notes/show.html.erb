@@ -1,29 +1,31 @@
 <div class="wrapper_with_padding">
   <div id="note_show">
-    <h1 class="title">
-      <%= @note.title %>
-    </h1>
+    <h1><%= @note.title %></h1>
+
 	<p id="notice"><%= notice %></p>
 
-	<p>
-	  <strong>Text:</strong>
-	  <%= @note.text %>
-	</p>
+	<div class="field">
+	  <p><strong>User:  </strong>
+	  <%= @note.user.name %></p>
+	</div>	
 
+	<div class="field">
+	  <p><strong>Text:</strong>
+	  <br><%= @note.text %></p>
+	</div>
 
-	<p>
-	  <strong>User:</strong>
-	  <%= @note.user.name %>
-	</p>
+	<div class="field">
+	  <!-- % if @note.image_id.exists ? %>
+	    %= image_tag @note.image_id (:thumb) %>
+	  % end %> -->
 
-  <!-- % if @note.image_id.exists ? %>
-    %= image_tag @note.image_id (:thumb) %>
-  % end %> -->
+	  <img id="photo" src=@note.image_id onerror="" alt="Espacio cargar la imagen">
+	   <br><br>
+	   </div>
+	</div>
 
-  <img id="photo" src=@note.image_id
-    onerror="" alt="alt">
-
-	<%= link_to 'Edit', edit_note_path(@note), class: "button"  %> |
-	<%= link_to 'Back', notes_path, class: "button"  %>
-   </div>
+	<div class="actions">	
+		<%= link_to 'Edit', edit_note_path(@note), class: "button"  %> 
+		<%= link_to 'Back', notes_path, class: "button"  %>
+	</div>
 </div>
