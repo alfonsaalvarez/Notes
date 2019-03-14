@@ -7,7 +7,7 @@
 	<div class="field">
 	  <p><strong>User:  </strong>
 	  <%= @note.user.name %></p>
-	</div>	
+	</div>
 
 	<div class="field">
 	  <p><strong>Text:</strong>
@@ -15,17 +15,17 @@
 	</div>
 
 	<div class="field">
-	  <!-- % if @note.image_id.exists ? %>
-	    %= image_tag @note.image_id (:thumb) %>
-	  % end %> -->
+	  <% if @note.image.attached? %>
+	    <%= image_tag @note.image %>
+	  <% end %>
 
-	  <img id="photo" src=@note.image_id onerror="" alt="Espacio cargar la imagen">
+	  <!-- img id="photo" src=@note.image onerror="" alt="Espacio cargar la imagen">
 	   <br><br>
-	   </div>
+	   </div> -->
 	</div>
 
-	<div class="actions">	
-		<%= link_to 'Edit', edit_note_path(@note), class: "button"  %> 
+	<div class="actions">
+		<%= link_to 'Edit', edit_note_path(@note), class: "button"  %>
 		<%= link_to 'Back', notes_path, class: "button"  %>
 	</div>
 </div>

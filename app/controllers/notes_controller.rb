@@ -25,6 +25,8 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = Note.new(note_params)
+    @note.image.attach(note_params[:image])
+    #byebug
 
     respond_to do |format|
       @note.user=User.find_by name: note_params[:user_id]
@@ -72,6 +74,6 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:title,:text, :user_id, )
+      params.require(:note).permit(:title,:text, :user_id, :image)
     end
 end
