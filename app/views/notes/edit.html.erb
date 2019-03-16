@@ -1,19 +1,19 @@
 
 
 <div class=wrapper_with_padding>
-<!--<%= render 'form', note: @note %>-->
+<!--%= render 'form', note: @note %>-->
 	<h1>Editing Note</h1>
-	  
+
 
 	<%= form_with(model: @note, local: true) do |form|%>
 
 	  <!--<div class="field">
-	    <%= form.label :user %>
-	    <%= @note.user.name %>
+	    %= form.label :user %>
+	    %= @note.user.name %>
 	  </div>-->
 
 	  <div class="field">
-		<%= form.label :title%>
+			<%= form.label :title %>
 	    <%= form.text_field :title %>
 	  </div>
 
@@ -22,10 +22,15 @@
 	    <%= form.text_area :text %>
 	  </div>
 
-  <div class="field">
-    <%=form.label :image%>
-    <%= form.file_field :image %>
-  </div>
+  	<div class="field">
+    	<% if @note.image.attached? %>
+    		<%= image_tag @note.image %>
+			<% end %>
+  	</div>
+
+		<div class="field">
+			<%= form.file_field :image %>
+		</div>
 
 	  <div class="actions">
 	    <%= form.submit "Save", class: "button" %>
@@ -34,6 +39,12 @@
 
 	<% end %>
 
-
-
 </div>
+
+		<!-- if @note.image.attached?
+					image_tag @note.image
+					button delete image?
+				else
+					form.label :image
+					form.file_field :image
+		-->

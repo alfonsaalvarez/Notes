@@ -45,7 +45,6 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1.json
   def update
     respond_to do |format|
-      #@note.user=User.find_by name: note_params[:user_id]
       if @note.update(note_params)
         format.html { redirect_to @note, notice: 'Note was successfully updated.' }
         format.json { render :show, status: :ok, location: @note }
@@ -59,6 +58,7 @@ class NotesController < ApplicationController
   # DELETE /notes/1
   # DELETE /notes/1.json
   def destroy
+    #byebug
     @note.destroy
     respond_to do |format|
       format.html { redirect_to notes_url, notice: 'Note was successfully destroyed.' }
