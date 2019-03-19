@@ -1,5 +1,7 @@
 <%= javascript_include_tag 'application'%>
 <%= csrf_meta_tag %>
+<!-- No quitar!! -->
+
 <div class="wrapper_with_padding">
   <div class="clearfix" id="notes">
 	<p id="notice"><%= notice %></p>
@@ -18,7 +20,7 @@
 
 	  <tbody>
 	    <% @notes.each do |note| %>
-        <% if 1 == note.user_id %>
+        <% if session[:user_id] == note.user_id %>
           <tr>
 		          <td><%= note.title %></td>
 		          <td><%= note.text %></td>
@@ -28,7 +30,7 @@
 		          <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' }, class: "button"  %></td>
 	        </tr>
         <% end %>
-	    <% end %>
+      <% end %>
 	  </tbody>
 	</table>
 

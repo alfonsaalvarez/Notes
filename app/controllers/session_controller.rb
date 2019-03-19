@@ -10,8 +10,9 @@ class SessionController < ApplicationController
 
     elsif @user.password == params[:password]
       session[:user]=@user.name
+      session[:user_id]=@user.id
       redirect_to notes_path, :notice => "Logged in!"
-      
+
     else
       flash.now.alert ="Invalid password"
       render :new
@@ -25,5 +26,9 @@ class SessionController < ApplicationController
   def destroy
 	session[:user] = nil
 	redirect_to :root, :notice => "Logged out!"
+  end
+
+  def session_params
+    params.require(:user_id, :password).permit(:user)
   end
 end
