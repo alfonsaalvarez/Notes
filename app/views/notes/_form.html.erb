@@ -21,15 +21,17 @@
     <%= form.text_area :text %>
   </div>
 
-  <div class="field">
+  <!-- div class="field">
     <%= form.label :user_id %>
     <%= form.text_field :user_id %>
-  </div>
+  </div -->
+
+  <!-- % @note.user_id = session[:user_id] % -->
 
   <div class="field">
     <%=form.label :image%>
     <%= form.file_field :image %>
-  </div> 
+  </div>
 
   <div class="actions">
     <%= form.submit "Save", class: "button"%>

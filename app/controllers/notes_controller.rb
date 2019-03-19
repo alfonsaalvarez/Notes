@@ -26,12 +26,13 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = Note.new(note_params)
-    byebug
+    #byebug
+    @note.user_id = session[:user_id]
     @note.image.attach(note_params[:image])
     #byebug
 
     respond_to do |format|
-      @note.user=User.find_by name: note_params[:user_id]
+      #@note.user=User.find_by name: note_params[:user_id]
 
       if @note.save
         format.html { redirect_to @note, notice: 'Note was successfully created.' }
