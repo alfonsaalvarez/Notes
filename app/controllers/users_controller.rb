@@ -24,7 +24,9 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    #byebug
     @user = User.new(user_params)
+    @user.admin=false #as deafult. we can create admins in other ways
     if @user.save
       redirect_to root_url, :notice => 'User was successfully created.'
     else
@@ -64,6 +66,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :password)
+      params.require(:user, :admin).permit(:name, :password)
     end
 end
