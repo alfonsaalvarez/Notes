@@ -4,31 +4,37 @@
 <div class="wrapper_with_padding">
   <div class="clearfix" id="notes">
 	<div class="row">
-	    <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-6""><h1>My Notes</h1></div>
+	    <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-6""><h1 class="title_notes">My Notes</h1></div>
+	</div>
+	<div class="row">
 	    <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-6""><%= link_to "New Note", new_note_path, class: "button" %></div>
 	</div>
 
-	  <% unless @notes.blank? %>
+	<div class="col-xs-12 col-sm-6 col-md-4">
+	<% unless @notes.blank? %>
 	    <% @notes.each do |note| %>
 	    <% if session[:user_id] == note.user_id %>
-	      <div class="note">
-		
-		  <table>
-		    <tr>
-			<td><%= note.title %></td>
-			<td><%= link_to '', note, class:"far fa-eye" %></td>
-			<td><%= link_to '', edit_note_path(note), class: "fas fa-edit"%></td>
-			<td><%= link_to '', note, method: :delete, data: { confirm: 'Are you sure?' }, class:"fas fa-trash-alt"%></td>
-		    </tr>
-		   </table>
-     	     </div>
-	  <% end %>
-    <% end %>
+	      	<div class="note">
+		  		<table>
+		    		<tr>
+						<td><%= note.title %></td>
+						<td><%= link_to '', note, class:"far fa-eye fa-2x" %></td>
+						<td><%= link_to '', edit_note_path(note), class: "fas fa-edit fa-2x"%></td>
+						<td><%= link_to '', note, method: :delete, data: { confirm: 'Are you sure?' }, class:"fas fa-trash-alt fa-2x"%></td>
+		    		</tr>
+		   		</table>
+		   	</div>
+	  	<% end %>
+    	<% end %>
     <% else %>
-    <h2>Add a new note</h2>
-    <p>It seems that you haven't created any note. Would you like to?</p>
-    
+	    <div class="row">
+	    	<h2>Add a new note</h2>
+	    </div>
+	    <div class="row">
+	    	<p>It seems that you haven't created any note. Would you like to?</p>
+	    </div>
     <% end %>
+    </div>
   </div>
   
 
