@@ -23,8 +23,9 @@
       <%= link_to "My collections", notes_path %>
 		  <%= link_to 'My profile', user_path(session[:user_id])%>
   		<%= link_to "Sing out", session_destroy_path %>
+    <% else %>
+      <%= link_to "Log In", new_session_path %>
     <% end %>
-    <%= link_to "Log In", new_session_path %>
 	      </nav>
 	  </div>
 	</div>
