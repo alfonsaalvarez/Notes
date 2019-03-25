@@ -1,0 +1,2850 @@
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (77.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (17.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateUsers (20190309100431)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "password" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190309100431_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190309100431"]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (17.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateNotes (20190309100448)
+  [1m[35m (1.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "notes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_7f2323ad43"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  ↳ db/migrate/20190309100448_create_notes.rb:3
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX "index_notes_on_user_id" ON "notes" ("user_id")[0m
+  ↳ db/migrate/20190309100448_create_notes.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190309100448"]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (21.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateNoteCollections (20190309110154)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "note_collections" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "note_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_e8261741fa"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_d0d752fe89"
+FOREIGN KEY ("note_id")
+  REFERENCES "notes" ("id")
+)[0m
+  ↳ db/migrate/20190309110154_create_note_collections.rb:3
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX "index_note_collections_on_user_id" ON "note_collections" ("user_id")[0m
+  ↳ db/migrate/20190309110154_create_note_collections.rb:3
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX "index_note_collections_on_note_id" ON "note_collections" ("note_id")[0m
+  ↳ db/migrate/20190309110154_create_note_collections.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190309110154"]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (16.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateImages (20190311081547)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "images" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "image_file_name" varchar, "image_content_type" varchar, "image_file_size" varchar, "image_updated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190311081547_create_images.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190311081547"]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (18.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to AddTitle (20190311184442)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "notes" ADD "title" varchar[0m
+  ↳ db/migrate/20190311184442_add_title.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190311184442"]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (16.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateActiveStorageTables (20190314191333)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "byte_size" bigint NOT NULL, "checksum" varchar NOT NULL, "created_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190314191333_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  ↳ db/migrate/20190314191333_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  ↳ db/migrate/20190314191333_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  ↳ db/migrate/20190314191333_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  ↳ db/migrate/20190314191333_create_active_storage_tables.active_storage.rb:16
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190314191333"]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (17.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.9ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-03-19 09:54:14.543738"], ["updated_at", "2019-03-19 09:54:14.543738"]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (16.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Started GET "/" for 127.0.0.1 at 2019-03-19 11:00:02 +0100
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/adrian/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 30873ms (Views: 30807.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2019-03-19 11:00:36 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (167.7ms)
+  Rendered users/new.html.erb within layouts/application (172.4ms)
+Completed 200 OK in 439ms (Views: 277.1ms | ActiveRecord: 4.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2019-03-19 11:00:45 +0100
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KshTc6RNbXWAgkKxV/XEBrwHREmJ6ndDTJRCwugF8L57DqDr/WfDQvWSNia360DA/9U7f0RH1M4NH1HIDvDwvg==", "user"=>{"name"=>"ra", "password"=>"[FILTERED]"}, "commit"=>"New user"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "ra"], ["password", "ra"], ["created_at", "2019-03-19 10:00:45.155026"], ["updated_at", "2019-03-19 10:00:45.155026"]]
+  ↳ app/controllers/users_controller.rb:28
+  [1m[35m (18.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:28
+Redirected to http://localhost:3000/
+Completed 302 Found in 43ms (ActiveRecord: 19.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-19 11:00:45 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 127ms (Views: 122.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2019-03-19 11:00:49 +0100
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WDd6YF1fn8ih4SS8Swbz1B6dgi9pjZK07vlpSmmI+pOYO09K/bFL/7/Y8zoqGNpbTyco+MZJTdY2tyZH+K783A==", "username"=>"ra", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "ra"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:6
+Redirected to http://localhost:3000/notes
+Completed 302 Found in 136ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:00:49 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  Rendered notes/index.html.erb within layouts/application (5.2ms)
+Completed 500 Internal Server Error in 117ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/adrian/NotesB4/app/views/notes/index.html.erb:27: else without rescue is useless
+   	  else 
+   	  ^~~~
+/home/adrian/NotesB4/app/views/notes/index.html.erb:35: syntax error, unexpected ensure, expecting end
+          ensure
+          ^~~~~~
+/home/adrian/NotesB4/app/views/notes/index.html.erb:37: syntax error, unexpected end-of-input, expecting end):
+  
+app/views/notes/index.html.erb:27: else without rescue is useless
+app/views/notes/index.html.erb:35: syntax error, unexpected ensure, expecting end
+app/views/notes/index.html.erb:37: syntax error, unexpected end-of-input, expecting end
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:01:48 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  Rendered notes/index.html.erb within layouts/application (10.2ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/adrian/NotesB4/app/views/notes/index.html.erb:27: else without rescue is useless
+   	  else 
+   	  ^~~~
+/home/adrian/NotesB4/app/views/notes/index.html.erb:35: syntax error, unexpected ensure, expecting end
+          ensure
+          ^~~~~~
+/home/adrian/NotesB4/app/views/notes/index.html.erb:37: syntax error, unexpected end-of-input, expecting end):
+  
+app/views/notes/index.html.erb:27: else without rescue is useless
+app/views/notes/index.html.erb:35: syntax error, unexpected ensure, expecting end
+app/views/notes/index.html.erb:37: syntax error, unexpected end-of-input, expecting end
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:03:08 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  Rendered notes/index.html.erb within layouts/application (4.7ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/adrian/NotesB4/app/views/notes/index.html.erb:29: else without rescue is useless
+     else 
+     ^~~~
+/home/adrian/NotesB4/app/views/notes/index.html.erb:40: syntax error, unexpected ensure, expecting end
+          ensure
+          ^~~~~~
+/home/adrian/NotesB4/app/views/notes/index.html.erb:42: syntax error, unexpected end-of-input, expecting end):
+  
+app/views/notes/index.html.erb:29: else without rescue is useless
+app/views/notes/index.html.erb:40: syntax error, unexpected ensure, expecting end
+app/views/notes/index.html.erb:42: syntax error, unexpected end-of-input, expecting end
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:03:25 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (568.7ms)
+Completed 200 OK in 709ms (Views: 697.8ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/notes/new" for 127.0.0.1 at 2019-03-19 11:03:37 +0100
+Processing by NotesController#new as HTML
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/_form.html.erb (104.0ms)
+  Rendered notes/new.html.erb within layouts/application (110.0ms)
+Completed 200 OK in 263ms (Views: 216.1ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/notes" for 127.0.0.1 at 2019-03-19 11:03:50 +0100
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KFdXUzHiO0T7aiEtMtz0o+2c+XHQew5ipS289g64+wkMuSycfzkhiS+ZD7nKZKTzuVbwFqaBV4xSA4P691YQhg==", "note"=>{"title"=>"Lista de la compra", "text"=>"gwtrhrthhwrtjyn"}, "commit"=>"Save"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/notes_controller.rb:37
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:37
+  [1m[36mNote Create (1.1ms)[0m  [1m[32mINSERT INTO "notes" ("text", "user_id", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?)[0m  [["text", "gwtrhrthhwrtjyn"], ["user_id", 1], ["created_at", "2019-03-19 10:03:50.884286"], ["updated_at", "2019-03-19 10:03:50.884286"], ["title", "Lista de la compra"]]
+  ↳ app/controllers/notes_controller.rb:37
+  [1m[35m (19.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/notes_controller.rb:37
+Redirected to http://localhost:3000/notes/1
+Completed 302 Found in 321ms (ActiveRecord: 24.0ms)
+
+
+Started GET "/notes/1" for 127.0.0.1 at 2019-03-19 11:03:51 +0100
+Processing by NotesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mNote Load (1.0ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:74
+  Rendering notes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:9
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Note"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:18
+  Rendered notes/show.html.erb within layouts/application (17.9ms)
+Completed 200 OK in 142ms (Views: 129.5ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:03:54 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (252.8ms)
+Completed 200 OK in 398ms (Views: 391.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:04:24 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (237.7ms)
+Completed 200 OK in 351ms (Views: 343.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:04:56 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (222.4ms)
+Completed 200 OK in 345ms (Views: 339.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:06:18 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (385.0ms)
+Completed 200 OK in 490ms (Views: 484.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:09:02 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (205.5ms)
+Completed 500 Internal Server Error in 4399ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (Invalid CSS after "}": expected "}", was ""):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7: 
+     8:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9: <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    10:     
+    11: 	
+  
+app/assets/stylesheets/notes.scss:47
+app/assets/stylesheets/application.scss:11
+app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb___3765943286355505468_69914737252540'
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:10:06 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (221.1ms)
+Completed 500 Internal Server Error in 4750ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (Invalid CSS after "}": expected "}", was ""):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7: 
+     8:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9: <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    10:     
+    11: 	
+  
+app/assets/stylesheets/notes.scss:47
+app/assets/stylesheets/application.scss:11
+app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb___3765943286355505468_69914751152840'
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:10:46 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (216.9ms)
+Completed 200 OK in 11214ms (Views: 11209.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:11:23 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.9ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (231.4ms)
+Completed 200 OK in 357ms (Views: 351.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:11:42 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (230.0ms)
+Completed 200 OK in 348ms (Views: 343.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:16:20 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (224.5ms)
+Completed 200 OK in 11440ms (Views: 11435.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/notes/new" for 127.0.0.1 at 2019-03-19 11:17:42 +0100
+Processing by NotesController#new as HTML
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/_form.html.erb (14.7ms)
+  Rendered notes/new.html.erb within layouts/application (19.0ms)
+Started GET "/notes/new" for 127.0.0.1 at 2019-03-19 11:17:52 +0100
+Processing by NotesController#new as HTML
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/_form.html.erb (17.0ms)
+  Rendered notes/new.html.erb within layouts/application (24.3ms)
+Completed 200 OK in 11841ms (Views: 11835.9ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 12933ms (Views: 12889.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/notes/new" for 127.0.0.1 at 2019-03-19 11:18:05 +0100
+Processing by NotesController#new as HTML
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/_form.html.erb (13.0ms)
+  Rendered notes/new.html.erb within layouts/application (16.9ms)
+Completed 200 OK in 133ms (Views: 129.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/notes" for 127.0.0.1 at 2019-03-19 11:18:40 +0100
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CdTIVs3Dm+FNdo9c2dmW9YpF5XPx8VEn00rkTb7XrgstOrOZgxiBLJmFocghYcal3o/sFIcLCMkkZNtBRzlFhA==", "note"=>{"title"=>"betrnryn", "text"=>"tymtumtdmmdt"}, "commit"=>"Save"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/notes_controller.rb:37
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:37
+  [1m[36mNote Create (1.2ms)[0m  [1m[32mINSERT INTO "notes" ("text", "user_id", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?)[0m  [["text", "tymtumtdmmdt"], ["user_id", 1], ["created_at", "2019-03-19 10:18:40.677531"], ["updated_at", "2019-03-19 10:18:40.677531"], ["title", "betrnryn"]]
+  ↳ app/controllers/notes_controller.rb:37
+  [1m[35m (47.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/notes_controller.rb:37
+Redirected to http://localhost:3000/notes/2
+Completed 302 Found in 77ms (ActiveRecord: 51.0ms)
+
+
+Started GET "/notes/2" for 127.0.0.1 at 2019-03-19 11:18:40 +0100
+Processing by NotesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:74
+  Rendering notes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:9
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Note"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:18
+  Rendered notes/show.html.erb within layouts/application (16.9ms)
+Completed 200 OK in 134ms (Views: 121.1ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:18:43 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (1.0ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (236.1ms)
+Completed 200 OK in 346ms (Views: 340.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/notes/new" for 127.0.0.1 at 2019-03-19 11:18:49 +0100
+Processing by NotesController#new as HTML
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/_form.html.erb (26.0ms)
+  Rendered notes/new.html.erb within layouts/application (30.7ms)
+Completed 200 OK in 141ms (Views: 137.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/notes" for 127.0.0.1 at 2019-03-19 11:18:56 +0100
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nlSZxqmiBmyuxGiEX2ypdHAOEAF2bF+VODmW1uKbsMC6uuIJ53kcoXo3RhCn1PkkJMQZZgCWBnvPF6naG3VbTw==", "note"=>{"title"=>"je57k", "text"=>"e67kruk"}, "commit"=>"Save"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/notes_controller.rb:37
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:37
+  [1m[36mNote Create (1.0ms)[0m  [1m[32mINSERT INTO "notes" ("text", "user_id", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?)[0m  [["text", "e67kruk"], ["user_id", 1], ["created_at", "2019-03-19 10:18:56.288872"], ["updated_at", "2019-03-19 10:18:56.288872"], ["title", "je57k"]]
+  ↳ app/controllers/notes_controller.rb:37
+  [1m[35m (183.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/notes_controller.rb:37
+Redirected to http://localhost:3000/notes/3
+Completed 302 Found in 212ms (ActiveRecord: 185.2ms)
+
+
+Started GET "/notes/3" for 127.0.0.1 at 2019-03-19 11:18:56 +0100
+Processing by NotesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:74
+  Rendering notes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:9
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Note"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:18
+  Rendered notes/show.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 131ms (Views: 121.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:18:59 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.9ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (211.8ms)
+Completed 200 OK in 320ms (Views: 315.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/notes/new" for 127.0.0.1 at 2019-03-19 11:19:02 +0100
+Processing by NotesController#new as HTML
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/_form.html.erb (16.5ms)
+  Rendered notes/new.html.erb within layouts/application (20.2ms)
+Completed 200 OK in 147ms (Views: 143.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/notes" for 127.0.0.1 at 2019-03-19 11:19:09 +0100
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xc1toVbJI05c1pR+3niNq+aturtb4BdK5Xa5UC4qxfp5IxZuGBI5g4gluuomwN37smez3C0aTqQSWIZc18QudQ==", "note"=>{"title"=>"ek7ekt", "text"=>"uykutk"}, "commit"=>"Save"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/notes_controller.rb:37
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:37
+  [1m[36mNote Create (0.9ms)[0m  [1m[32mINSERT INTO "notes" ("text", "user_id", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?)[0m  [["text", "uykutk"], ["user_id", 1], ["created_at", "2019-03-19 10:19:09.695397"], ["updated_at", "2019-03-19 10:19:09.695397"], ["title", "ek7ekt"]]
+  ↳ app/controllers/notes_controller.rb:37
+  [1m[35m (141.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/notes_controller.rb:37
+Redirected to http://localhost:3000/notes/4
+Completed 302 Found in 168ms (ActiveRecord: 143.5ms)
+
+
+Started GET "/notes/4" for 127.0.0.1 at 2019-03-19 11:19:09 +0100
+Processing by NotesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:74
+  Rendering notes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:9
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Note"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:18
+  Rendered notes/show.html.erb within layouts/application (17.9ms)
+Completed 200 OK in 140ms (Views: 131.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:19:11 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (523.7ms)
+Completed 200 OK in 638ms (Views: 633.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:21:39 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (291.9ms)
+Completed 200 OK in 10955ms (Views: 10950.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:22:09 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.9ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (253.9ms)
+Completed 200 OK in 398ms (Views: 391.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:24:50 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (1.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (376.6ms)
+Completed 200 OK in 11069ms (Views: 11061.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:27:19 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.9ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (232.3ms)
+Completed 200 OK in 10963ms (Views: 10957.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:28:39 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (1.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (245.3ms)
+Completed 200 OK in 384ms (Views: 379.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/notes/1" for 127.0.0.1 at 2019-03-19 11:28:44 +0100
+Processing by NotesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:74
+  Rendering notes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:9
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Note"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:18
+  Rendered notes/show.html.erb within layouts/application (14.9ms)
+Completed 200 OK in 226ms (Views: 218.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:28:48 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (1.0ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (326.5ms)
+Completed 200 OK in 500ms (Views: 492.7ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/notes/1" for 127.0.0.1 at 2019-03-19 11:28:52 +0100
+Processing by NotesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"SCpDNaDKN0SzI2cSUls7oosWg8tLzefm54YLw79lKrK4h42rrcxUMuk4RG1C2KrKYLcQ5jwQo2GxT0Ojk8cYGA==", "id"=>"1"}
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:74
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/notes_controller.rb:64
+  [1m[36mNote Destroy (0.9ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/notes_controller.rb:64
+  [1m[35m (78.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/notes_controller.rb:64
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Note"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:64
+Redirected to http://localhost:3000/notes
+Completed 302 Found in 120ms (ActiveRecord: 80.4ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:28:52 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (1.0ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (362.1ms)
+Completed 200 OK in 516ms (Views: 509.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/notes/3/edit" for 127.0.0.1 at 2019-03-19 11:28:56 +0100
+Processing by NotesController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:74
+  Rendering notes/edit.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Note"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/notes/edit.html.erb:26
+  Rendered notes/edit.html.erb within layouts/application (19.3ms)
+Completed 200 OK in 187ms (Views: 177.2ms | ActiveRecord: 1.3ms)
+
+
+Started PATCH "/notes/3" for 127.0.0.1 at 2019-03-19 11:29:08 +0100
+Processing by NotesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DAWuxyhUNj1bWmh0KsiFSlrZ/autil5nc48ynYDRhG9F7num3xYZkdneP/Xmg0R0zfYjKJoRoeHpN3nr1Ym6bg==", "note"=>{"title"=>"je57k", "text"=>"e67kruk", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007f2ca0529bc0 @tempfile=#<Tempfile:/tmp/RackMultipart20190319-3214-1doyexk.png>, @original_filename="Captura de pantalla de 2018-02-06 10:18:15.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"note[image]\"; filename=\"Captura de pantalla de 2018-02-06 10:18:15.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Save", "id"=>"3"}
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:74
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/notes_controller.rb:51
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Note"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:51
+[36m  Disk Storage (5.6ms) [0m[32mUploaded file to key: KufhRXQd9KkZZg9KxwLQykXw (checksum: ZteJzbZM5IYSLf+LZeVlVA==)[0m
+  [1m[36mActiveStorage::Blob Create (1.0ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["key", "KufhRXQd9KkZZg9KxwLQykXw"], ["filename", "Captura de pantalla de 2018-02-06 10:18:15.png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["byte_size", 123497], ["checksum", "ZteJzbZM5IYSLf+LZeVlVA=="], ["created_at", "2019-03-19 10:29:08.620022"]]
+  ↳ app/controllers/notes_controller.rb:51
+  [1m[36mActiveStorage::Attachment Create (1.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Note"], ["record_id", 3], ["blob_id", 1], ["created_at", "2019-03-19 10:29:08.681458"]]
+  ↳ app/controllers/notes_controller.rb:51
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:51
+  [1m[36mNote Update (0.8ms)[0m  [1m[33mUPDATE "notes" SET "updated_at" = ? WHERE "notes"."id" = ?[0m  [["updated_at", "2019-03-19 10:29:08.689177"], ["id", 3]]
+  ↳ app/controllers/notes_controller.rb:51
+  [1m[35m (22.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/notes_controller.rb:51
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 925ea8d4-55f7-4f49-b88f-26646e473213) to Async(default) with arguments: #<GlobalID:0x00007f2ca0fe7cb0 @uri=#<URI::GID gid://notes-app/ActiveStorage::Blob/1>>
+Redirected to http://localhost:3000/notes/3
+Completed 302 Found in 791ms (ActiveRecord: 31.7ms)
+
+
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/adrian/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [925ea8d4-55f7-4f49-b88f-26646e473213] Performing ActiveStorage::AnalyzeJob (Job ID: 925ea8d4-55f7-4f49-b88f-26646e473213) from Async(default) with arguments: #<GlobalID:0x00007f2ca1035348 @uri=#<URI::GID gid://notes-app/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [925ea8d4-55f7-4f49-b88f-26646e473213] [36m  Disk Storage (1.1ms) [0m[34mDownloaded file from key: KufhRXQd9KkZZg9KxwLQykXw[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [925ea8d4-55f7-4f49-b88f-26646e473213] Skipping image analysis because the mini_magick gem isn't installed
+Started GET "/notes/3" for 127.0.0.1 at 2019-03-19 11:29:08 +0100
+[ActiveJob] [ActiveStorage::AnalyzeJob] [925ea8d4-55f7-4f49-b88f-26646e473213]   [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [925ea8d4-55f7-4f49-b88f-26646e473213]   ↳ /home/adrian/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by NotesController#show as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [925ea8d4-55f7-4f49-b88f-26646e473213]   [1m[36mActiveStorage::Blob Update (1.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [925ea8d4-55f7-4f49-b88f-26646e473213]   ↳ /home/adrian/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+  Parameters: {"id"=>"3"}
+[ActiveJob] [ActiveStorage::AnalyzeJob] [925ea8d4-55f7-4f49-b88f-26646e473213]   [1m[35m (24.2ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [925ea8d4-55f7-4f49-b88f-26646e473213]   ↳ /home/adrian/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [925ea8d4-55f7-4f49-b88f-26646e473213] Performed ActiveStorage::AnalyzeJob (Job ID: 925ea8d4-55f7-4f49-b88f-26646e473213) from Async(default) in 70.26ms
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:74
+  Rendering notes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:9
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Note"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:18
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:18
+  Rendered notes/show.html.erb within layouts/application (25.2ms)
+Completed 200 OK in 195ms (Views: 152.7ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e3ab7186e89be6f5569e651a952b2177857c5734/Captura%20de%20pantalla%20de%202018-02-06%2010-18-15.png" for 127.0.0.1 at 2019-03-19 11:29:09 +0100
+Processing by ActiveStorage::BlobsController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e3ab7186e89be6f5569e651a952b2177857c5734", "filename"=>"Captura de pantalla de 2018-02-06 10-18-15"}
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/adrian/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (5.1ms) [0m[34mGenerated URL for file at key: KufhRXQd9KkZZg9KxwLQykXw (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTM1ZtYUZKWVVXUTVTMnRhV21jNVMzaDNURkY1YTFoM0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSUJqR2x1YkdsdVpUc2dabWxzWlc1aGJXVTlJa05oY0hSMWNtRWdaR1VnY0dGdWRHRnNiR0VnWkdVZ01qQXhPQzB3TWkwd05pQXhNQzB4T0MweE5TNXdibWNpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBOaGNIUjFjbUVsTWpCa1pTVXlNSEJoYm5SaGJHeGhKVEl3WkdVbE1qQXlNREU0TFRBeUxUQTJKVEl3TVRBdE1UZ3RNVFV1Y0c1bkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSU9hVzFoWjJVdmNHNW5CanNHVkE9PSIsImV4cCI6IjIwMTktMDMtMTlUMTA6MzQ6MDkuNTUxWiIsInB1ciI6ImJsb2Jfa2V5In19--ab0e45e684889db01672c6a72ca3ad5416ec2992/Captura%20de%20pantalla%20de%202018-02-06%2010-18-15.png?content_type=image%2Fpng&disposition=inline%3B+filename%3D%22Captura+de+pantalla+de+2018-02-06+10-18-15.png%22%3B+filename%2A%3DUTF-8%27%27Captura%2520de%2520pantalla%2520de%25202018-02-06%252010-18-15.png)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTM1ZtYUZKWVVXUTVTMnRhV21jNVMzaDNURkY1YTFoM0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSUJqR2x1YkdsdVpUc2dabWxzWlc1aGJXVTlJa05oY0hSMWNtRWdaR1VnY0dGdWRHRnNiR0VnWkdVZ01qQXhPQzB3TWkwd05pQXhNQzB4T0MweE5TNXdibWNpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBOaGNIUjFjbUVsTWpCa1pTVXlNSEJoYm5SaGJHeGhKVEl3WkdVbE1qQXlNREU0TFRBeUxUQTJKVEl3TVRBdE1UZ3RNVFV1Y0c1bkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSU9hVzFoWjJVdmNHNW5CanNHVkE9PSIsImV4cCI6IjIwMTktMDMtMTlUMTA6MzQ6MDkuNTUxWiIsInB1ciI6ImJsb2Jfa2V5In19--ab0e45e684889db01672c6a72ca3ad5416ec2992/Captura%20de%20pantalla%20de%202018-02-06%2010-18-15.png?content_type=image%2Fpng&disposition=inline%3B+filename%3D%22Captura+de+pantalla+de+2018-02-06+10-18-15.png%22%3B+filename%2A%3DUTF-8%27%27Captura%2520de%2520pantalla%2520de%25202018-02-06%252010-18-15.png
+Completed 302 Found in 19ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTM1ZtYUZKWVVXUTVTMnRhV21jNVMzaDNURkY1YTFoM0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSUJqR2x1YkdsdVpUc2dabWxzWlc1aGJXVTlJa05oY0hSMWNtRWdaR1VnY0dGdWRHRnNiR0VnWkdVZ01qQXhPQzB3TWkwd05pQXhNQzB4T0MweE5TNXdibWNpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBOaGNIUjFjbUVsTWpCa1pTVXlNSEJoYm5SaGJHeGhKVEl3WkdVbE1qQXlNREU0TFRBeUxUQTJKVEl3TVRBdE1UZ3RNVFV1Y0c1bkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSU9hVzFoWjJVdmNHNW5CanNHVkE9PSIsImV4cCI6IjIwMTktMDMtMTlUMTA6MzQ6MDkuNTUxWiIsInB1ciI6ImJsb2Jfa2V5In19--ab0e45e684889db01672c6a72ca3ad5416ec2992/Captura%20de%20pantalla%20de%202018-02-06%2010-18-15.png?content_type=image%2Fpng&disposition=inline%3B+filename%3D%22Captura+de+pantalla+de+2018-02-06+10-18-15.png%22%3B+filename%2A%3DUTF-8%27%27Captura%2520de%2520pantalla%2520de%25202018-02-06%252010-18-15.png" for 127.0.0.1 at 2019-03-19 11:29:09 +0100
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"content_type"=>"image/png", "disposition"=>"inline; filename=\"Captura de pantalla de 2018-02-06 10-18-15.png\"; filename*=UTF-8''Captura%20de%20pantalla%20de%202018-02-06%2010-18-15.png", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTM1ZtYUZKWVVXUTVTMnRhV21jNVMzaDNURkY1YTFoM0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSUJqR2x1YkdsdVpUc2dabWxzWlc1aGJXVTlJa05oY0hSMWNtRWdaR1VnY0dGdWRHRnNiR0VnWkdVZ01qQXhPQzB3TWkwd05pQXhNQzB4T0MweE5TNXdibWNpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBOaGNIUjFjbUVsTWpCa1pTVXlNSEJoYm5SaGJHeGhKVEl3WkdVbE1qQXlNREU0TFRBeUxUQTJKVEl3TVRBdE1UZ3RNVFV1Y0c1bkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSU9hVzFoWjJVdmNHNW5CanNHVkE9PSIsImV4cCI6IjIwMTktMDMtMTlUMTA6MzQ6MDkuNTUxWiIsInB1ciI6ImJsb2Jfa2V5In19--ab0e45e684889db01672c6a72ca3ad5416ec2992", "filename"=>"Captura de pantalla de 2018-02-06 10-18-15"}
+Completed 200 OK in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:29:14 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (499.4ms)
+Completed 200 OK in 612ms (Views: 605.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/notes/2/edit" for 127.0.0.1 at 2019-03-19 11:29:18 +0100
+Processing by NotesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:74
+  Rendering notes/edit.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Note"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/notes/edit.html.erb:26
+  Rendered notes/edit.html.erb within layouts/application (18.3ms)
+Completed 200 OK in 142ms (Views: 132.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:29:21 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (223.3ms)
+Completed 200 OK in 337ms (Views: 333.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 11:34:29 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (205.6ms)
+Completed 200 OK in 311ms (Views: 306.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-19 11:39:33 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 170ms (Views: 164.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2019-03-19 11:39:36 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (16.5ms)
+  Rendered users/new.html.erb within layouts/application (21.8ms)
+Completed 200 OK in 147ms (Views: 141.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-03-19 11:39:38 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:15
+  Rendered users/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 125ms (Views: 120.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-19 11:39:44 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 126ms (Views: 121.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 13:59:02 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.9ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (253.3ms)
+Completed 200 OK in 378ms (Views: 371.5ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:00:25 +0100
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/adrian/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 4581ms (Views: 4474.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:00:32 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 132ms (Views: 128.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2019-03-19 19:00:36 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (90.4ms)
+  Rendered users/new.html.erb within layouts/application (107.3ms)
+Completed 200 OK in 339ms (Views: 223.9ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2019-03-19 19:00:44 +0100
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1xuYZXlEuEUWzX7Wga3mkMk+2hzZf4R0R4HOEHvpY9yHh1RK9A9X3I8YH2wP5Ezfp2Ngpuivm0bFJ2cQr3MaIg==", "user"=>{"name"=>"loca", "password"=>"[FILTERED]"}, "commit"=>"New user"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "loca"], ["password", "loca"], ["created_at", "2019-03-19 18:00:45.014197"], ["updated_at", "2019-03-19 18:00:45.014197"]]
+  ↳ app/controllers/users_controller.rb:28
+  [1m[35m (22.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:28
+Redirected to http://localhost:3000/
+Completed 302 Found in 44ms (ActiveRecord: 23.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:00:45 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 257ms (Views: 252.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2019-03-19 19:01:09 +0100
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zekcOtSAenLGLSr9espdkFSR48/CELXc4CMxSm7+teiDoVEF/PowOtcd9+jwAI33zgD/mQ3P50aKY6aAqAZQSg==", "username"=>"loca", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "loca"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:6
+Redirected to http://localhost:3000/notes
+Completed 302 Found in 120ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:01:09 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (617.7ms)
+Completed 200 OK in 802ms (Views: 766.0ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:06:45 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (343.9ms)
+Completed 200 OK in 548ms (Views: 538.5ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:07:31 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  Rendered notes/index.html.erb within layouts/application (10.4ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/adrian/NotesB4/app/views/notes/index.html.erb:27: else without rescue is useless
+    	 else 
+    	 ^~~~):
+  
+app/views/notes/index.html.erb:27: else without rescue is useless
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:08:05 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (279.3ms)
+Completed 200 OK in 381ms (Views: 375.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:08:16 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (195.3ms)
+Completed 200 OK in 298ms (Views: 293.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:08:19 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (205.2ms)
+Completed 200 OK in 336ms (Views: 330.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:08:21 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (273.2ms)
+Completed 200 OK in 390ms (Views: 385.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/notes/new" for 127.0.0.1 at 2019-03-19 19:08:24 +0100
+Processing by NotesController#new as HTML
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/_form.html.erb (83.9ms)
+  Rendered notes/new.html.erb within layouts/application (88.0ms)
+Completed 200 OK in 205ms (Views: 200.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/notes" for 127.0.0.1 at 2019-03-19 19:08:31 +0100
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bEtoFSnqQLaYpZCU+l8qz2Ii7CrnxEOrL9eBET/AZmJVx/kM9ZkZ5ce+QsQwpFcRB3KdrT8Fiu8dxdYdUg1WSA==", "note"=>{"title"=>"mdtyuk", "text"=>",fruyku"}, "commit"=>"Save"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/notes_controller.rb:37
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:37
+  [1m[36mNote Create (0.9ms)[0m  [1m[32mINSERT INTO "notes" ("text", "user_id", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?)[0m  [["text", ",fruyku"], ["user_id", 2], ["created_at", "2019-03-19 18:08:32.148155"], ["updated_at", "2019-03-19 18:08:32.148155"], ["title", "mdtyuk"]]
+  ↳ app/controllers/notes_controller.rb:37
+  [1m[35m (14.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/notes_controller.rb:37
+Redirected to http://localhost:3000/notes/5
+Completed 302 Found in 232ms (ActiveRecord: 22.0ms)
+
+
+Started GET "/notes/5" for 127.0.0.1 at 2019-03-19 19:08:32 +0100
+Processing by NotesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:74
+  Rendering notes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:9
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Note"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:18
+  Rendered notes/show.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 126ms (Views: 115.7ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:08:34 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.9ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (301.9ms)
+Completed 200 OK in 404ms (Views: 399.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:10:20 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (196.5ms)
+Completed 200 OK in 308ms (Views: 302.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:10:21 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 139ms (Views: 133.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2019-03-19 19:10:24 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (12.4ms)
+  Rendered users/new.html.erb within layouts/application (26.5ms)
+Completed 200 OK in 155ms (Views: 149.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-03-19 19:10:26 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:15
+  Rendered users/index.html.erb within layouts/application (9.2ms)
+Completed 200 OK in 202ms (Views: 197.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-03-19 19:10:29 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 120ms (Views: 112.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-03-19 19:10:35 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (6.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:15
+  Rendered users/index.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 144ms (Views: 133.9ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2019-03-19 19:10:48 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 123ms (Views: 117.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2019-03-19 19:12:01 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (3.2ms)
+Completed 500 Internal Server Error in 2590ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `users_path_profile' for #<#<Class:0x00007fb5080c3518>:0x00007fb50e270c70>
+Did you mean?  users_path):
+    20: 	      <nav>
+    21: 		<%= link_to "My notes", notes_path %>
+    22: 		<%= link_to "My collections", notes_path %>
+    23: 		<%= link_to "My profile", users_path_profile %>
+    24: 		<%= link_to "Sing out", notes_path %>
+    25: 		
+    26: 	      </nav>
+  
+app/views/layouts/application.html.erb:23:in `_app_views_layouts_application_html_erb___2416280126549698210_70207801642280'
+Started GET "/users/2" for 127.0.0.1 at 2019-03-19 19:12:37 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (3.3ms)
+Completed 500 Internal Server Error in 2778ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `profile_users_path' for #<#<Class:0x00007fb5080c3518>:0x00007fb5101429a0>):
+    20: 	      <nav>
+    21: 		<%= link_to "My notes", notes_path %>
+    22: 		<%= link_to "My collections", notes_path %>
+    23: 		<%= link_to "My profile", profile_users_path %>
+    24: 		<%= link_to "Sing out", notes_path %>
+    25: 		
+    26: 	      </nav>
+  
+app/views/layouts/application.html.erb:23:in `_app_views_layouts_application_html_erb___2416280126549698210_70207817808760'
+Started GET "/users/2" for 127.0.0.1 at 2019-03-19 19:13:10 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (9.7ms)
+Completed 500 Internal Server Error in 1623ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `profile_users_path' for #<#<Class:0x00007fb5080c3518>:0x00007fb50de06090>):
+    20: 	      <nav>
+    21: 		<%= link_to "My notes", notes_path %>
+    22: 		<%= link_to "My collections", notes_path %>
+    23: 		<%= link_to "My profile", profile_users_path(@user) %>
+    24: 		<%= link_to "Sing out", notes_path %>
+    25: 		
+    26: 	      </nav>
+  
+app/views/layouts/application.html.erb:23:in `_app_views_layouts_application_html_erb___2416280126549698210_70207799269060'
+Started POST "/__web_console/repl_sessions/160d7fbc3795c26f7deee9a0ead27820/trace" for 127.0.0.1 at 2019-03-19 19:13:26 +0100
+Started GET "/users/2" for 127.0.0.1 at 2019-03-19 19:14:52 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (3.5ms)
+Completed 500 Internal Server Error in 2322ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `user' for #<#<Class:0x00007fb5080c3518>:0x00007fb51811bfa0>
+Did you mean?  @user):
+    20: 	      <nav>
+    21: 		<%= link_to "My notes", notes_path %>
+    22: 		<%= link_to "My collections", notes_path %>
+    23: 		<%= link_to "My profile", profile_users_path(user) %>
+    24: 		<%= link_to "Sing out", notes_path %>
+    25: 		
+    26: 	      </nav>
+  
+app/views/layouts/application.html.erb:23:in `_app_views_layouts_application_html_erb___2416280126549698210_70207884805840'
+Started GET "/users/2" for 127.0.0.1 at 2019-03-19 19:17:44 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (4.5ms)
+Completed 500 Internal Server Error in 1298ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `show_users_path' for #<#<Class:0x00007fb5080c3518>:0x00007fb50df76858>):
+    20: 	      <nav>
+    21: 		<%= link_to "My notes", notes_path %>
+    22: 		<%= link_to "My collections", notes_path %>
+    23: 		<%= link_to "My profile", show_users_path(@user) %>
+    24: 		<%= link_to "Sing out", notes_path %>
+    25: 		
+    26: 	      </nav>
+  
+app/views/layouts/application.html.erb:23:in `_app_views_layouts_application_html_erb___2416280126549698210_70207800030540'
+Started GET "/users/2" for 127.0.0.1 at 2019-03-19 19:18:21 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (2.9ms)
+Completed 500 Internal Server Error in 1353ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `show_user_path' for #<#<Class:0x00007fb5080c3518>:0x0000000001f4d818>
+Did you mean?  new_user_path):
+    20: 	      <nav>
+    21: 		<%= link_to "My notes", notes_path %>
+    22: 		<%= link_to "My collections", notes_path %>
+    23: 		<%= link_to "My profile", show_user_path(@user) %>
+    24: 		<%= link_to "Sing out", notes_path %>
+    25: 		
+    26: 	      </nav>
+  
+app/views/layouts/application.html.erb:23:in `_app_views_layouts_application_html_erb___2416280126549698210_20529020'
+Started GET "/users/2" for 127.0.0.1 at 2019-03-19 19:19:34 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 2168ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `user' for #<#<Class:0x00007fb5080c3518>:0x00007fb510188220>
+Did you mean?  @user):
+    20: 	      <nav>
+    21: 		<%= link_to "My notes", notes_path %>
+    22: 		<%= link_to "My collections", notes_path %>
+    23: 		<%= link_to "My profile", user %>
+    24: 		<%= link_to "Sing out", notes_path %>
+    25: 		
+    26: 	      </nav>
+  
+app/views/layouts/application.html.erb:23:in `_app_views_layouts_application_html_erb___2416280126549698210_70207750031300'
+Started GET "/users/2" for 127.0.0.1 at 2019-03-19 19:20:37 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (3.4ms)
+Completed 500 Internal Server Error in 2120ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `user' for #<#<Class:0x00007fb5080c3518>:0x00007fb50cb3d300>
+Did you mean?  @user):
+    20: 	      <nav>
+    21: 		<%= link_to "My notes", notes_path %>
+    22: 		<%= link_to "My collections", notes_path %>
+    23: 		<%= link_to 'My profile', user , class: "button"%>
+    24: 		<%= link_to "Sing out", notes_path %>
+    25: 		
+    26: 	      </nav>
+  
+app/views/layouts/application.html.erb:23:in `_app_views_layouts_application_html_erb___2416280126549698210_70207789562860'
+Started GET "/users/2" for 127.0.0.1 at 2019-03-19 19:21:22 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 135ms (Views: 126.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-03-19 19:21:26 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:15
+  Rendered users/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 188ms (Views: 182.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2019-03-19 19:21:34 +0100
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (9.9ms)
+  Rendered users/edit.html.erb within layouts/application (21.4ms)
+Completed 200 OK in 129ms (Views: 123.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-03-19 19:21:38 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 120ms (Views: 113.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-03-19 19:22:02 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 142ms (Views: 135.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:22:05 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (216.6ms)
+Completed 200 OK in 325ms (Views: 319.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:22:08 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (248.2ms)
+Completed 200 OK in 353ms (Views: 347.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:22:12 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (207.9ms)
+Completed 200 OK in 325ms (Views: 320.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:22:14 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (3.8ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (257.3ms)
+Completed 200 OK in 387ms (Views: 379.5ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:22:14 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:22:14 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (314.2ms)
+Completed 200 OK in 603ms (Views: 593.5ms | ActiveRecord: 0.7ms)
+
+
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (442.7ms)
+Completed 200 OK in 547ms (Views: 540.2ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:22:43 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (208.3ms)
+Completed 200 OK in 319ms (Views: 314.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:22:47 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (253.7ms)
+Completed 200 OK in 364ms (Views: 359.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:23:58 +0100
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/adrian/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (6.5ms)
+Completed 500 Internal Server Error in 1689ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `[]' for nil:NilClass):
+    20: 	      <nav>
+    21: 		<%= link_to "My notes", notes_path %>
+    22: 		<%= link_to "My collections", notes_path %>
+    23: 		<%= link_to 'My profile', @session[:user_id] %>
+    24: 		<%= link_to "Sing out", notes_path %>
+    25: 		
+    26: 	      </nav>
+  
+app/views/layouts/application.html.erb:23:in `_app_views_layouts_application_html_erb___4095060311514363598_34665900'
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:26:07 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (5.9ms)
+Completed 500 Internal Server Error in 1400ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_signed_in?' for #<#<Class:0x0000000004196168>:0x00007f33059be058>):
+    18: 	    <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-6" ><%= link_to image_tag('logo.jpg'), root_path, id: "logo" %></div> 
+    19: 	    <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-6" style="background: #455A64">
+    20: 	      <nav>
+    21: 		<% if user_signed_in? %>
+    22: 		<%= link_to "My notes", notes_path %>
+    23: 		<%= link_to "My collections", notes_path %>
+    24: 		<%= link_to 'My profile', user_path(id: current_user.id), method: "get" %>
+  
+app/views/layouts/application.html.erb:21:in `_app_views_layouts_application_html_erb___4095060311514363598_69928557098740'
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:28:16 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (13.6ms)
+Completed 500 Internal Server Error in 1706ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_signed_in?' for #<#<Class:0x0000000004196168>:0x00007f33062d5bc8>):
+    18: 	    <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-6" ><%= link_to image_tag('logo.jpg'), root_path, id: "logo" %></div> 
+    19: 	    <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-6" style="background: #455A64">
+    20: 	      <nav>
+    21: 		<--!<% if user_signed_in? %>! -->
+    22: 		<%= link_to "My notes", notes_path %>
+    23: 		<%= link_to "My collections", notes_path %>
+    24: 		<%= link_to 'My profile', user_path(id: current_user.id), method: "get" %>
+  
+app/views/layouts/application.html.erb:21:in `_app_views_layouts_application_html_erb___4095060311514363598_69928561882300'
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:28:38 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (5.1ms)
+Completed 500 Internal Server Error in 2354ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `current_user' for #<#<Class:0x0000000004196168>:0x00007f33064e7e98>
+Did you mean?  current_page?):
+    21: 
+    22: 		<%= link_to "My notes", notes_path %>
+    23: 		<%= link_to "My collections", notes_path %>
+    24: 		<%= link_to 'My profile', user_path(id: current_user.id), method: "get" %>
+    25: 		<%= link_to "Sing out", destroy_user_session_path, method: "delete" %>
+    26: 
+    27:         	<%= link_to "Log In", new_user_session_path %>
+  
+app/views/layouts/application.html.erb:24:in `_app_views_layouts_application_html_erb___4095060311514363598_69928562927160'
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:31:13 +0100
+Processing by SessionController#new as HTML
+Completed 500 Internal Server Error in 1864ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `current_user' for #<SessionController:0x00007f33066750f8>):
+  
+app/controllers/application_controller.rb:5:in `set_current_user'
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:32:52 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (34.9ms)
+Completed 500 Internal Server Error in 2430ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `current_user' for #<#<Class:0x00007f3305011168>:0x00007f3304fe40a0>
+Did you mean?  current_page?):
+    21: 
+    22: 		<%= link_to "My notes", notes_path %>
+    23: 		<%= link_to "My collections", notes_path %>
+    24: 		<%= link_to 'My profile', user_path(id: current_user.id), method: "get" %>
+    25: 		<%= link_to "Sing out", destroy_user_session_path, method: "delete" %>
+    26: 
+    27:         	<%= link_to "Log In", new_user_session_path %>
+  
+app/views/layouts/application.html.erb:24:in `_app_views_layouts_application_html_erb___4095060311514363598_69928552212120'
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:33:18 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (5.7ms)
+Completed 500 Internal Server Error in 137ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"users", :id=>nil}, missing required keys: [:id]):
+    21: 
+    22: 		<%= link_to "My notes", notes_path %>
+    23: 		<%= link_to "My collections", notes_path %>
+    24: 		<%= link_to 'My profile', user_path(@user), method: "get" %>
+    25: 		<%= link_to "Sing out", destroy_user_session_path, method: "delete" %>
+    26: 
+    27:         	<%= link_to "Log In", new_user_session_path %>
+  
+app/views/layouts/application.html.erb:24:in `_app_views_layouts_application_html_erb___4095060311514363598_69928556602640'
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:33:44 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (5.1ms)
+Completed 500 Internal Server Error in 131ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"users", :id=>nil}, missing required keys: [:id]):
+    21: 
+    22: 		<%= link_to "My notes", notes_path %>
+    23: 		<%= link_to "My collections", notes_path %>
+    24: 		<%= link_to 'My profile', user_path(@user)%>
+    25: 		<%= link_to "Sing out", destroy_user_session_path, method: "delete" %>
+    26: 
+    27:         	<%= link_to "Log In", new_user_session_path %>
+  
+app/views/layouts/application.html.erb:24:in `_app_views_layouts_application_html_erb___4095060311514363598_69928562292840'
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:34:00 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (17.6ms)
+Completed 500 Internal Server Error in 131ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"users", :id=>nil}, missing required keys: [:id]):
+    21: 
+    22: 		<%= link_to "My notes", notes_path %>
+    23: 		<%= link_to "My collections", notes_path %>
+    24: 		<%= link_to 'My profile', user_path(@user_id)%>
+    25: 		<%= link_to "Sing out", destroy_user_session_path, method: "delete" %>
+    26: 
+    27:         	<%= link_to "Log In", new_user_session_path %>
+  
+app/views/layouts/application.html.erb:24:in `_app_views_layouts_application_html_erb___4095060311514363598_69928561652680'
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:35:15 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (12.7ms)
+Completed 500 Internal Server Error in 130ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for nil:NilClass):
+    21: 
+    22: 		<%= link_to "My notes", notes_path %>
+    23: 		<%= link_to "My collections", notes_path %>
+    24: 		<%= link_to 'My profile', user_path(@user.id)%>
+    25: 		<%= link_to "Sing out", destroy_user_session_path, method: "delete" %>
+    26: 
+    27:         	<%= link_to "Log In", new_user_session_path %>
+  
+app/views/layouts/application.html.erb:24:in `_app_views_layouts_application_html_erb___4095060311514363598_69928561141280'
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:35:31 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (5.5ms)
+Completed 500 Internal Server Error in 135ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"users", :id=>nil}, missing required keys: [:id]):
+    21: 
+    22: 		<%= link_to "My notes", notes_path %>
+    23: 		<%= link_to "My collections", notes_path %>
+    24: 		<%= link_to 'My profile', user_path(@id)%>
+    25: 		<%= link_to "Sing out", destroy_user_session_path, method: "delete" %>
+    26: 
+    27:         	<%= link_to "Log In", new_user_session_path %>
+  
+app/views/layouts/application.html.erb:24:in `_app_views_layouts_application_html_erb___4095060311514363598_69928559353280'
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:36:14 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (5.4ms)
+Completed 500 Internal Server Error in 453ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_id' for #<ActionDispatch::Request::Session:0x00007f3305b5e520>):
+    21: 
+    22: 		<%= link_to "My notes", notes_path %>
+    23: 		<%= link_to "My collections", notes_path %>
+    24: 		<%= link_to 'My profile', user_path(session.user_id)%>
+    25: 		<%= link_to "Sing out", destroy_user_session_path, method: "delete" %>
+    26: 
+    27:         	<%= link_to "Log In", new_user_session_path %>
+  
+app/views/layouts/application.html.erb:24:in `_app_views_layouts_application_html_erb___4095060311514363598_69928557962100'
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:37:00 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (6.9ms)
+Completed 500 Internal Server Error in 2338ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `destroy_user_session_path' for #<#<Class:0x00007f3305011168>:0x00007f3305b65eb0>):
+    22: 		<%= link_to "My notes", notes_path %>
+    23: 		<%= link_to "My collections", notes_path %>
+    24: 		<%= link_to 'My profile', user_path(session[:user_id])%>
+    25: 		<%= link_to "Sing out", destroy_user_session_path, method: "delete" %>
+    26: 
+    27:         	<%= link_to "Log In", new_user_session_path %>
+    28: 
+  
+app/views/layouts/application.html.erb:25:in `_app_views_layouts_application_html_erb___4095060311514363598_69928557964840'
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:37:48 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (13.7ms)
+Completed 500 Internal Server Error in 2517ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `destroy_session_path' for #<#<Class:0x00007f3305011168>:0x00007f3306231460>
+Did you mean?  session_destroy_path):
+    22: 		<%= link_to "My notes", notes_path %>
+    23: 		<%= link_to "My collections", notes_path %>
+    24: 		<%= link_to 'My profile', user_path(session[:user_id])%>
+    25: 		<%= link_to "Sing out", destroy_session_path%>
+    26: 
+    27:         	<%= link_to "Log In", new_user_session_path %>
+    28: 
+  
+app/views/layouts/application.html.erb:25:in `_app_views_layouts_application_html_erb___4095060311514363598_69928561471020'
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:39:01 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 134ms (Views: 130.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2019-03-19 19:39:04 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 116ms (Views: 112.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/destroy" for 127.0.0.1 at 2019-03-19 19:39:06 +0100
+Processing by SessionController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:39:06 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 109ms (Views: 105.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:39:08 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (349.8ms)
+Completed 200 OK in 473ms (Views: 448.7ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/session/destroy" for 127.0.0.1 at 2019-03-19 19:39:13 +0100
+Processing by SessionController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:39:13 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 115ms (Views: 110.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:39:23 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.9ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (215.1ms)
+Completed 200 OK in 330ms (Views: 325.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2019-03-19 19:39:25 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 114ms (Views: 110.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2019-03-19 19:39:37 +0100
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"69QKHo9geKiVLDQ8HWSw/hNI2OFF4p0lS3x64h+dEK2lnEchpxoy4IQc6SmXrmCZidnEt4o9z78hPO0o2WX1Dw==", "username"=>"hola", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "hola"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:6
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (60.8ms)
+Completed 200 OK in 201ms (Views: 167.0ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2019-03-19 19:39:45 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (25.6ms)
+  Rendered users/new.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 160ms (Views: 130.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-03-19 19:39:48 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:15
+  Rendered users/index.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 119ms (Views: 114.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2019-03-19 19:39:52 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 125ms (Views: 118.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2019-03-19 19:39:59 +0100
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VhVBsmtWzx6uMpXnF/z+ZQD42viLGYsptEyCwUqhlEYYXQyNQyyFVr8CSPKdNi4CmmnGrkTG2bPeDBULjFlx5A==", "username"=>"loca", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "loca"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:6
+Redirected to http://localhost:3000/notes
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:40:00 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (263.9ms)
+Completed 200 OK in 372ms (Views: 367.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/session/destroy" for 127.0.0.1 at 2019-03-19 19:40:05 +0100
+Processing by SessionController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-19 19:40:05 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 129ms (Views: 125.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2019-03-19 19:40:10 +0100
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IDpL+11U5DCChP4U+84NI2lvRwWkWBUK5ao09KK5No1ucgbEdS6ueJO0IwFxBN1E8/5bU2uHR5CP6qM+ZEHTLw==", "username"=>"ra", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "ra"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:6
+Redirected to http://localhost:3000/notes
+Completed 302 Found in 6ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:40:11 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (201.3ms)
+Completed 200 OK in 304ms (Views: 298.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2019-03-19 19:41:56 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 182ms (Views: 178.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2019-03-19 19:41:59 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (10.0ms)
+  Rendered users/new.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 138ms (Views: 133.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-03-19 19:42:00 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:15
+  Rendered users/index.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 128ms (Views: 123.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-03-19 19:42:03 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 122ms (Views: 113.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-03-19 19:50:59 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 138ms (Views: 127.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-03-19 19:51:22 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 126ms (Views: 118.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 19:51:30 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (252.0ms)
+Completed 200 OK in 352ms (Views: 346.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-03-19 19:51:33 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 120ms (Views: 113.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-03-19 19:52:24 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:15
+  Rendered users/index.html.erb within layouts/application (17.1ms)
+Completed 200 OK in 123ms (Views: 118.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-03-19 19:56:05 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 137ms (Views: 127.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2019-03-19 19:56:49 +0100
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (9.5ms)
+  Rendered users/edit.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 130ms (Views: 124.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-03-19 19:56:54 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:15
+  Rendered users/index.html.erb within layouts/application (16.3ms)
+Completed 200 OK in 122ms (Views: 117.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2019-03-19 19:58:12 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 126ms (Views: 119.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-03-19 19:58:16 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (7.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:15
+  Rendered users/index.html.erb within layouts/application (17.2ms)
+Completed 200 OK in 130ms (Views: 118.9ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-03-19 19:58:18 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 118ms (Views: 112.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-03-19 19:58:23 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:15
+  Rendered users/index.html.erb within layouts/application (16.7ms)
+Completed 200 OK in 173ms (Views: 168.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2019-03-19 19:58:26 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 117ms (Views: 111.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/2/edit" for 127.0.0.1 at 2019-03-19 19:58:30 +0100
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (9.5ms)
+  Rendered users/edit.html.erb within layouts/application (21.6ms)
+Completed 200 OK in 129ms (Views: 122.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-03-19 19:58:32 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:15
+  Rendered users/index.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 119ms (Views: 114.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-03-19 19:59:57 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:18
+  Rendered users/index.html.erb within layouts/application (209.6ms)
+Completed 200 OK in 362ms (Views: 357.4ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/users/2" for 127.0.0.1 at 2019-03-19 20:00:03 +0100
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"S5ztgCCZIqytke8exRtSVLcsUuyf4zkLjYrUyKhIaQD27Onlltf/PzfLHqCL2j5L+0A5ltkdCluHU5fHiUhkqg==", "id"=>"2"}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:52
+  [1m[36mUser Destroy (3.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/users_controller.rb:52
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:52
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 6.6ms)
+
+
+  
+ActiveRecord::InvalidForeignKey (SQLite3::ConstraintException: FOREIGN KEY constraint failed: DELETE FROM "users" WHERE "users"."id" = ?):
+  
+app/controllers/users_controller.rb:52:in `destroy'
+Started GET "/users" for 127.0.0.1 at 2019-03-19 20:01:38 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:16
+  Rendered users/index.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 128ms (Views: 123.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2019-03-19 20:01:39 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 114ms (Views: 108.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2019-03-19 20:06:59 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 121ms (Views: 112.0ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 20:07:14 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (256.2ms)
+Completed 200 OK in 357ms (Views: 351.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2019-03-19 20:08:41 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 149ms (Views: 145.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2019-03-19 20:08:45 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (10.0ms)
+  Rendered users/new.html.erb within layouts/application (19.4ms)
+Completed 200 OK in 136ms (Views: 132.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-03-19 20:08:48 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:16
+  Rendered users/index.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 116ms (Views: 111.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-03-19 20:08:55 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 161ms (Views: 154.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-03-19 20:08:56 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 114ms (Views: 102.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 20:08:59 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (240.5ms)
+Completed 200 OK in 358ms (Views: 354.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 20:09:02 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.9ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (308.8ms)
+Completed 200 OK in 450ms (Views: 444.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 20:11:37 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (232.1ms)
+Completed 200 OK in 336ms (Views: 331.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-19 20:12:39 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (252.8ms)
+Completed 200 OK in 363ms (Views: 358.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-03-19 20:13:39 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 129ms (Views: 122.5ms | ActiveRecord: 0.3ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/alfonsa/.rvm/gems/ruby-2.6.0/gems/bootsnap-1.4.1/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/alfonsa/.rvm/gems/ruby-2.6.0/gems/bootsnap-1.4.1/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/alfonsa/.rvm/gems/ruby-2.6.0/gems/bootsnap-1.4.1/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/alfonsa/.rvm/gems/ruby-2.6.0/gems/bootsnap-1.4.1/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/alfonsa/.rvm/gems/ruby-2.6.0/gems/bootsnap-1.4.1/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:21
+Started GET "/" for 127.0.0.1 at 2019-03-20 11:38:26 +0100
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/alfonsa/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (5.7ms)
+Completed 500 Internal Server Error in 3426ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"users", :id=>nil}, missing required keys: [:id]):
+    20: 	      <nav>
+    21: 		<%= link_to "My notes", notes_path %>
+    22: 		<%= link_to "My collections", notes_path %>
+    23: 		<%= link_to 'My profile', user_path(session[:user_id])%>
+    24: 		<%= link_to "Sing out", session_destroy_path %>
+    25:         	<%= link_to "Log In", new_session_path %>
+    26: 	      </nav>
+  
+app/views/layouts/application.html.erb:23:in `_app_views_layouts_application_html_erb__46168428554050015_70279163155420'
+Started GET "/" for 127.0.0.1 at 2019-03-20 11:46:46 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 21ms (Views: 20.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2019-03-20 11:46:49 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (24.8ms)
+  Rendered users/new.html.erb within layouts/application (26.3ms)
+Completed 200 OK in 88ms (Views: 72.0ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2019-03-20 11:46:54 +0100
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YQnkgSIQSOpaBqabgJM3hcScXO1YgNwjF0TSjPZvvhxx4Jf0Bay9OJeQY8lEldrXspqPJoWGcqC4uq/AXp5XDA==", "user"=>{"name"=>"Alfonsa", "password"=>"[FILTERED]"}, "commit"=>"New user"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:28
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Alfonsa"], ["password", "Alvarez"], ["created_at", "2019-03-20 10:46:54.108127"], ["updated_at", "2019-03-20 10:46:54.108127"]]
+  ↳ app/controllers/users_controller.rb:28
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:28
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-20 11:46:54 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 23ms (Views: 21.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2019-03-20 11:46:58 +0100
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cd1nBuhfUkCus8ALnLom2s1j2uIv2ZKANR1AVKRRM/jVJlnBbmf9McGMNchaQW3hiWpcrAjDNki3bs9nYPYG+g==", "username"=>"Alfonsa", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Alfonsa"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:6
+Redirected to http://localhost:3000/notes
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 11:46:58 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (94.8ms)
+Completed 200 OK in 123ms (Views: 109.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/notes/new" for 127.0.0.1 at 2019-03-20 11:47:01 +0100
+Processing by NotesController#new as HTML
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/_form.html.erb (7.6ms)
+  Rendered notes/new.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 31ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/notes" for 127.0.0.1 at 2019-03-20 11:47:07 +0100
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LnESw41eTtKXvbWtI/0QZm50J3oQNhC3l3/+RHDkaPX8vVaeEm71JHENFzFLsppaeZAYgzq5BieAwH5uVZt7uQ==", "note"=>{"title"=>"asdlkfjads", "text"=>"asdfasdfasdfasd"}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/notes_controller.rb:37
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:37
+  [1m[36mNote Create (0.6ms)[0m  [1m[32mINSERT INTO "notes" ("text", "user_id", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?)[0m  [["text", "asdfasdfasdfasd"], ["user_id", 3], ["created_at", "2019-03-20 10:47:07.773950"], ["updated_at", "2019-03-20 10:47:07.773950"], ["title", "asdlkfjads"]]
+  ↳ app/controllers/notes_controller.rb:37
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/notes_controller.rb:37
+Redirected to http://localhost:3000/notes/6
+Completed 302 Found in 50ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/notes/6" for 127.0.0.1 at 2019-03-20 11:47:07 +0100
+Processing by NotesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:74
+  Rendering notes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:9
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 6], ["record_type", "Note"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:18
+  Rendered notes/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 21ms (Views: 18.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 11:47:09 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (38.5ms)
+Completed 200 OK in 58ms (Views: 56.6ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/notes/6" for 127.0.0.1 at 2019-03-20 11:47:13 +0100
+Processing by NotesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"QcfBWEr8qyUe2E0WxcDNxLUMHLfe/KbYAjHGbO6lAW2S3kIAs5Gg52oHUe1NB1GmoSKc2saQTAbSkrM/pTjV1Q==", "id"=>"6"}
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:74
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/notes_controller.rb:64
+  [1m[36mNote Destroy (0.4ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/notes_controller.rb:64
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/notes_controller.rb:64
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 6], ["record_type", "Note"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:64
+Redirected to http://localhost:3000/notes
+Completed 302 Found in 8ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 11:47:13 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (33.8ms)
+Completed 200 OK in 81ms (Views: 79.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 11:47:24 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (42.0ms)
+Completed 200 OK in 59ms (Views: 58.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 11:49:34 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (35.2ms)
+Completed 200 OK in 54ms (Views: 50.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 11:49:35 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (34.7ms)
+Completed 200 OK in 54ms (Views: 52.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-20 11:49:38 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 30ms (Views: 28.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-20 11:50:18 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/alfonsa/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 233ms (Views: 227.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2019-03-20 11:50:30 +0100
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"S5WhMPqw3AJSojKDTcmkMheYo4UvEWrKFox7M0T4HKLvbp/3fIhzcz2dx0CLMu8JU5ElywgLzgKU//QAgF8poA==", "username"=>"Alfonsa", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Alfonsa"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:6
+Redirected to http://localhost:3000/notes
+Completed 302 Found in 14ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 11:50:30 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (53.8ms)
+Completed 200 OK in 111ms (Views: 69.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2019-03-20 11:50:33 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 27ms (Views: 21.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/session/destroy" for 127.0.0.1 at 2019-03-20 11:51:31 +0100
+Processing by SessionController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-20 11:51:31 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 34ms (Views: 32.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2019-03-20 11:51:36 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 28ms (Views: 25.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/session/destroy" for 127.0.0.1 at 2019-03-20 11:51:38 +0100
+Processing by SessionController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-20 11:51:38 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 29ms (Views: 26.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-20 11:51:42 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 19ms (Views: 18.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2019-03-20 11:51:43 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 26ms (Views: 23.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 11:53:15 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (56.9ms)
+Completed 200 OK in 76ms (Views: 75.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-20 11:53:19 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 23ms (Views: 21.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2019-03-20 11:53:25 +0100
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EAnP97+fHTmkxGId6bCDMmcjO6n6WjimHIShjKPWkcC08vEwOaeySMv7l94vS8gJIyq9591AnG6e9y6/Z3Gkwg==", "username"=>"Alfonsa", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Alfonsa"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:6
+Redirected to http://localhost:3000/notes
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 11:53:25 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (49.5ms)
+Completed 200 OK in 68ms (Views: 66.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2019-03-20 11:53:27 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 23ms (Views: 20.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-03-20 11:53:36 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:16
+  Rendered users/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 24ms (Views: 22.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-20 12:08:28 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/maria/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.6ms)
+Completed 500 Internal Server Error in 3252ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"users", :id=>nil}, missing required keys: [:id]):
+    20: 	      <nav>
+    21: 		<%= link_to "My notes", notes_path %>
+    22: 		<%= link_to "My collections", notes_path %>
+    23: 		<%= link_to 'My profile', user_path(session[:user_id])%>
+    24: 		<%= link_to "Sing out", session_destroy_path %>
+    25:         	<%= link_to "Log In", new_session_path %>
+    26: 	      </nav>
+  
+app/views/layouts/application.html.erb:23:in `_app_views_layouts_application_html_erb__2672084252285695667_69968212207880'
+Started GET "/" for 127.0.0.1 at 2019-03-20 12:13:54 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 25ms (Views: 24.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2019-03-20 12:14:46 +0100
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GHL1wQwRL97AZZ6Q+H6uRSCUNGUvT2WL/Aog+QA4iPN37f/EpPXmeb125T9LoiKvYbogVMhs1Jnv0Z5t/aSUlA==", "username"=>"ra", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "ra"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:6
+Redirected to http://localhost:3000/notes
+Completed 302 Found in 15ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 12:14:46 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (119.9ms)
+Completed 200 OK in 143ms (Views: 136.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-20 12:15:44 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 22ms (Views: 20.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-20 12:15:54 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 22ms (Views: 21.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-20 12:16:11 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 18ms (Views: 17.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-20 12:17:20 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 20ms (Views: 19.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2019-03-20 12:24:21 +0100
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"iNrBfuhHBRvtbJhLnLmPcKXg6k2vqP78hB3pDN4o+jZTgC58ZYfmCvj0StcrP34Via2fomavls4OdPmD7PM7VA==", "username"=>"ra", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "ra"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:6
+Redirected to http://localhost:3000/notes
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 12:24:21 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (36.8ms)
+Completed 200 OK in 55ms (Views: 53.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-03-20 12:24:26 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 20ms (Views: 17.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2019-03-20 12:24:30 +0100
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (36.7ms)
+  Rendered users/edit.html.erb within layouts/application (38.0ms)
+Completed 200 OK in 57ms (Views: 55.2ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/users/1" for 127.0.0.1 at 2019-03-20 12:24:46 +0100
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"t8OOe/og2N6BhLViTdBlld6UmpCCfztHtWkP8hKh5vipOcqbWrzfw3trLYtTtzhDPrIotBvZRFxgBIjoAsXypQ==", "user"=>{"name"=>"raquel", "password"=>"[FILTERED]"}, "commit"=>"New user", "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:39
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "name" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["name", "raquel"], ["updated_at", "2019-03-20 11:24:46.986860"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:39
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:39
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 7ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-03-20 12:24:47 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 23ms (Views: 20.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2019-03-20 12:28:15 +0100
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (2.6ms)
+  Rendered users/edit.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 25ms (Views: 22.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-03-20 12:28:18 +0100
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:16
+  Rendered users/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 24ms (Views: 21.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-03-20 12:29:23 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 24ms (Views: 21.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 12:29:28 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (32.3ms)
+Completed 200 OK in 50ms (Views: 48.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-20 12:42:41 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/maria/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 215ms (Views: 206.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2019-03-20 12:42:49 +0100
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OgP8pxqjlK+Zr8SygKuyxaKfTAhJrB4KTMa3FNAxfkzhWROll2N3vow3Fi43LUOgjtI554CrdjjGr6eb4uq/Lg==", "username"=>"ra", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "ra"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:6
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 23ms (Views: 17.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2019-03-20 12:42:52 +0100
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sHl4suzqO0ugJ9RZXJTtqEIoKjr7k+pNX0wBsidEODNrI5ewYSrYWrW/BsXrEhzNbmVf1TKUgn/VJRE9FZ/5UQ==", "username"=>"ra", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "ra"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:6
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 25ms (Views: 23.8ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2019-03-20 12:42:53 +0100
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zDt5v3awCZtWiqx5D9kIgQeTPFsoHA5mYRh6gI1JOCcXYZa9+3DqikMSfuW4X/nkK95JtOEbZlTrcWoPv5L5RQ==", "username"=>"ra", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "ra"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:6
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 23ms (Views: 21.8ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2019-03-20 12:43:46 +0100
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"t3016Bg6IaehczuyM540qoge/MVxKzp8wOdsj3XjaWJsJ9rqlfrCtrTr6S6EGMXPpFOJKrgsUk5KjnwARzioAA==", "username"=>"ra", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "ra"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:6
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 18ms (Views: 17.4ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2019-03-20 12:44:06 +0100
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2HX+KkweWqF5lmzNjczKnfarOQMuHE5e2T4Xp9lDbd4DLxEowd65sGwOvlE6Sjv42uZM7OcbJmxTVwco65isvA==", "username"=>"raquel", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "raquel"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:6
+Redirected to http://localhost:3000/notes
+Completed 302 Found in 16ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 12:44:06 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 81ms (Views: 77.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/notes/2" for 127.0.0.1 at 2019-03-20 12:45:10 +0100
+Processing by NotesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:74
+  Rendering notes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:9
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Note"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:18
+  Rendered notes/show.html.erb within layouts/application (27.8ms)
+Completed 200 OK in 47ms (Views: 44.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 12:45:16 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (34.3ms)
+Completed 200 OK in 53ms (Views: 51.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/notes/3" for 127.0.0.1 at 2019-03-20 12:45:17 +0100
+Processing by NotesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:74
+  Rendering notes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:9
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Note"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:18
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:18
+  Rendered notes/show.html.erb within layouts/application (33.7ms)
+Completed 200 OK in 52ms (Views: 48.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e3ab7186e89be6f5569e651a952b2177857c5734/Captura%20de%20pantalla%20de%202018-02-06%2010-18-15.png" for 127.0.0.1 at 2019-03-20 12:45:17 +0100
+Processing by ActiveStorage::BlobsController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e3ab7186e89be6f5569e651a952b2177857c5734", "filename"=>"Captura de pantalla de 2018-02-06 10-18-15"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/maria/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (2.2ms) [0m[34mGenerated URL for file at key: KufhRXQd9KkZZg9KxwLQykXw (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTM1ZtYUZKWVVXUTVTMnRhV21jNVMzaDNURkY1YTFoM0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSUJqR2x1YkdsdVpUc2dabWxzWlc1aGJXVTlJa05oY0hSMWNtRWdaR1VnY0dGdWRHRnNiR0VnWkdVZ01qQXhPQzB3TWkwd05pQXhNQzB4T0MweE5TNXdibWNpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBOaGNIUjFjbUVsTWpCa1pTVXlNSEJoYm5SaGJHeGhKVEl3WkdVbE1qQXlNREU0TFRBeUxUQTJKVEl3TVRBdE1UZ3RNVFV1Y0c1bkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSU9hVzFoWjJVdmNHNW5CanNHVkE9PSIsImV4cCI6IjIwMTktMDMtMjBUMTE6NTA6MTcuODkzWiIsInB1ciI6ImJsb2Jfa2V5In19--608b1139596caf5ab7e2c879aafdd80ef2268f48/Captura%20de%20pantalla%20de%202018-02-06%2010-18-15.png?content_type=image%2Fpng&disposition=inline%3B+filename%3D%22Captura+de+pantalla+de+2018-02-06+10-18-15.png%22%3B+filename%2A%3DUTF-8%27%27Captura%2520de%2520pantalla%2520de%25202018-02-06%252010-18-15.png)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTM1ZtYUZKWVVXUTVTMnRhV21jNVMzaDNURkY1YTFoM0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSUJqR2x1YkdsdVpUc2dabWxzWlc1aGJXVTlJa05oY0hSMWNtRWdaR1VnY0dGdWRHRnNiR0VnWkdVZ01qQXhPQzB3TWkwd05pQXhNQzB4T0MweE5TNXdibWNpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBOaGNIUjFjbUVsTWpCa1pTVXlNSEJoYm5SaGJHeGhKVEl3WkdVbE1qQXlNREU0TFRBeUxUQTJKVEl3TVRBdE1UZ3RNVFV1Y0c1bkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSU9hVzFoWjJVdmNHNW5CanNHVkE9PSIsImV4cCI6IjIwMTktMDMtMjBUMTE6NTA6MTcuODkzWiIsInB1ciI6ImJsb2Jfa2V5In19--608b1139596caf5ab7e2c879aafdd80ef2268f48/Captura%20de%20pantalla%20de%202018-02-06%2010-18-15.png?content_type=image%2Fpng&disposition=inline%3B+filename%3D%22Captura+de+pantalla+de+2018-02-06+10-18-15.png%22%3B+filename%2A%3DUTF-8%27%27Captura%2520de%2520pantalla%2520de%25202018-02-06%252010-18-15.png
+Completed 302 Found in 6ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTM1ZtYUZKWVVXUTVTMnRhV21jNVMzaDNURkY1YTFoM0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSUJqR2x1YkdsdVpUc2dabWxzWlc1aGJXVTlJa05oY0hSMWNtRWdaR1VnY0dGdWRHRnNiR0VnWkdVZ01qQXhPQzB3TWkwd05pQXhNQzB4T0MweE5TNXdibWNpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBOaGNIUjFjbUVsTWpCa1pTVXlNSEJoYm5SaGJHeGhKVEl3WkdVbE1qQXlNREU0TFRBeUxUQTJKVEl3TVRBdE1UZ3RNVFV1Y0c1bkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSU9hVzFoWjJVdmNHNW5CanNHVkE9PSIsImV4cCI6IjIwMTktMDMtMjBUMTE6NTA6MTcuODkzWiIsInB1ciI6ImJsb2Jfa2V5In19--608b1139596caf5ab7e2c879aafdd80ef2268f48/Captura%20de%20pantalla%20de%202018-02-06%2010-18-15.png?content_type=image%2Fpng&disposition=inline%3B+filename%3D%22Captura+de+pantalla+de+2018-02-06+10-18-15.png%22%3B+filename%2A%3DUTF-8%27%27Captura%2520de%2520pantalla%2520de%25202018-02-06%252010-18-15.png" for 127.0.0.1 at 2019-03-20 12:45:17 +0100
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"content_type"=>"image/png", "disposition"=>"inline; filename=\"Captura de pantalla de 2018-02-06 10-18-15.png\"; filename*=UTF-8''Captura%20de%20pantalla%20de%202018-02-06%2010-18-15.png", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRTM1ZtYUZKWVVXUTVTMnRhV21jNVMzaDNURkY1YTFoM0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSUJqR2x1YkdsdVpUc2dabWxzWlc1aGJXVTlJa05oY0hSMWNtRWdaR1VnY0dGdWRHRnNiR0VnWkdVZ01qQXhPQzB3TWkwd05pQXhNQzB4T0MweE5TNXdibWNpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjBOaGNIUjFjbUVsTWpCa1pTVXlNSEJoYm5SaGJHeGhKVEl3WkdVbE1qQXlNREU0TFRBeUxUQTJKVEl3TVRBdE1UZ3RNVFV1Y0c1bkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSU9hVzFoWjJVdmNHNW5CanNHVkE9PSIsImV4cCI6IjIwMTktMDMtMjBUMTE6NTA6MTcuODkzWiIsInB1ciI6ImJsb2Jfa2V5In19--608b1139596caf5ab7e2c879aafdd80ef2268f48", "filename"=>"Captura de pantalla de 2018-02-06 10-18-15"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/notes/3/edit" for 127.0.0.1 at 2019-03-20 12:45:24 +0100
+Processing by NotesController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:74
+  Rendering notes/edit.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Note"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/notes/edit.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/notes/edit.html.erb:26
+  Rendered notes/edit.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 45ms (Views: 42.1ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/notes/3" for 127.0.0.1 at 2019-03-20 12:45:44 +0100
+Processing by NotesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WUVVDfiThtl/iqYpsiCt3cz9qZjMghNg0rp1k0giVCEJrq7yLSPhvV6p6WtpfTGsiDJwqUY5sxF5Y51z7r5asA==", "note"=>{"title"=>"this is a note", "text"=>"trying edit function", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007f7a188bef40 @tempfile=#<Tempfile:/tmp/RackMultipart20190320-5427-19uqhyd.jpg>, @original_filename="aura.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"note[image]\"; filename=\"aura.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save", "id"=>"3"}
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:74
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/notes_controller.rb:51
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Note"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:51
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:51
+[36m  Disk Storage (1.3ms) [0m[32mUploaded file to key: wxCYruA3SmwjeDNHxaB1urFE (checksum: 3EBB07W00s5QYdFNQmPE0w==)[0m
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["key", "wxCYruA3SmwjeDNHxaB1urFE"], ["filename", "aura.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 96981], ["checksum", "3EBB07W00s5QYdFNQmPE0w=="], ["created_at", "2019-03-20 11:45:44.753523"]]
+  ↳ app/controllers/notes_controller.rb:51
+  [1m[36mActiveStorage::Attachment Destroy (0.1ms)[0m  [1m[31mDELETE FROM "active_storage_attachments" WHERE "active_storage_attachments"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/notes_controller.rb:51
+  [1m[36mActiveStorage::Attachment Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Note"], ["record_id", 3], ["blob_id", 2], ["created_at", "2019-03-20 11:45:44.757193"]]
+  ↳ app/controllers/notes_controller.rb:51
+[ActiveJob] Enqueued ActiveStorage::PurgeJob (Job ID: 08f202d8-e65d-4a67-9c25-82393fe3d15f) to Async(default) with arguments: #<GlobalID:0x00007f7a0c0af3b0 @uri=#<URI::GID gid://notes-app/ActiveStorage::Blob/1>>
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:51
+  [1m[36mNote Update (0.3ms)[0m  [1m[33mUPDATE "notes" SET "title" = ?, "text" = ?, "updated_at" = ? WHERE "notes"."id" = ?[0m  [["title", "this is a note"], ["text", "trying edit function"], ["updated_at", "2019-03-20 11:45:44.797770"], ["id", 3]]
+  ↳ app/controllers/notes_controller.rb:51
+  [1m[36mNote Update (0.2ms)[0m  [1m[33mUPDATE "notes" SET "updated_at" = ? WHERE "notes"."id" = ?[0m  [["updated_at", "2019-03-20 11:45:44.757964"], ["id", 3]]
+  ↳ app/controllers/notes_controller.rb:51
+  [1m[35m (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/maria/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+  ↳ app/controllers/notes_controller.rb:51
+[ActiveJob] [ActiveStorage::PurgeJob] [08f202d8-e65d-4a67-9c25-82393fe3d15f] Performing ActiveStorage::PurgeJob (Job ID: 08f202d8-e65d-4a67-9c25-82393fe3d15f) from Async(default) with arguments: #<GlobalID:0x00007f7a0c15f490 @uri=#<URI::GID gid://notes-app/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::PurgeJob] [08f202d8-e65d-4a67-9c25-82393fe3d15f]   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [08f202d8-e65d-4a67-9c25-82393fe3d15f]   ↳ /home/maria/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::PurgeJob] [08f202d8-e65d-4a67-9c25-82393fe3d15f]   [1m[36mActiveStorage::Attachment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = ? LIMIT ?[0m  [["blob_id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [08f202d8-e65d-4a67-9c25-82393fe3d15f]   ↳ /home/maria/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::PurgeJob] [08f202d8-e65d-4a67-9c25-82393fe3d15f]   [1m[36mActiveStorage::Blob Destroy (0.2ms)[0m  [1m[31mDELETE FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ?[0m  [["id", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [08f202d8-e65d-4a67-9c25-82393fe3d15f]   ↳ /home/maria/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::PurgeJob] [08f202d8-e65d-4a67-9c25-82393fe3d15f]   [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [08f202d8-e65d-4a67-9c25-82393fe3d15f]   ↳ /home/maria/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::PurgeJob] [08f202d8-e65d-4a67-9c25-82393fe3d15f]   [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "ActiveStorage::Blob"], ["name", "preview_image"], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [08f202d8-e65d-4a67-9c25-82393fe3d15f]   ↳ /home/maria/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::PurgeJob] [08f202d8-e65d-4a67-9c25-82393fe3d15f] [36m  Disk Storage (0.1ms) [0m[31mDeleted file from key: KufhRXQd9KkZZg9KxwLQykXw[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [08f202d8-e65d-4a67-9c25-82393fe3d15f] [36m  Disk Storage (0.0ms) [0m[31mDeleted files by key prefix: variants/KufhRXQd9KkZZg9KxwLQykXw/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [08f202d8-e65d-4a67-9c25-82393fe3d15f] Performed ActiveStorage::PurgeJob (Job ID: 08f202d8-e65d-4a67-9c25-82393fe3d15f) from Async(default) in 13.47ms
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 204563ba-e641-4da6-9d1a-82892ceed0e4) to Async(default) with arguments: #<GlobalID:0x00007f7a1a5fa870 @uri=#<URI::GID gid://notes-app/ActiveStorage::Blob/2>>
+Redirected to http://localhost:3000/notes/3
+Completed 302 Found in 106ms (ActiveRecord: 5.4ms)
+
+
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/maria/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [204563ba-e641-4da6-9d1a-82892ceed0e4] Performing ActiveStorage::AnalyzeJob (Job ID: 204563ba-e641-4da6-9d1a-82892ceed0e4) from Async(default) with arguments: #<GlobalID:0x00007f7a1029b800 @uri=#<URI::GID gid://notes-app/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [204563ba-e641-4da6-9d1a-82892ceed0e4] [36m  Disk Storage (0.3ms) [0m[34mDownloaded file from key: wxCYruA3SmwjeDNHxaB1urFE[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [204563ba-e641-4da6-9d1a-82892ceed0e4] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [204563ba-e641-4da6-9d1a-82892ceed0e4]   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [204563ba-e641-4da6-9d1a-82892ceed0e4]   ↳ /home/maria/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [204563ba-e641-4da6-9d1a-82892ceed0e4]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [204563ba-e641-4da6-9d1a-82892ceed0e4]   ↳ /home/maria/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [204563ba-e641-4da6-9d1a-82892ceed0e4]   [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [204563ba-e641-4da6-9d1a-82892ceed0e4]   ↳ /home/maria/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [204563ba-e641-4da6-9d1a-82892ceed0e4] Performed ActiveStorage::AnalyzeJob (Job ID: 204563ba-e641-4da6-9d1a-82892ceed0e4) from Async(default) in 9.27ms
+Started GET "/notes/3" for 127.0.0.1 at 2019-03-20 12:45:44 +0100
+Processing by NotesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/notes_controller.rb:74
+  Rendering notes/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:9
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Note"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:18
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/notes/show.html.erb:18
+  Rendered notes/show.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 25ms (Views: 22.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4cbfa76851658edf30bc7cde96c1ca71efdf7a56/aura.jpg" for 127.0.0.1 at 2019-03-20 12:45:44 +0100
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4cbfa76851658edf30bc7cde96c1ca71efdf7a56", "filename"=>"aura"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/maria/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (0.4ms) [0m[34mGenerated URL for file at key: wxCYruA3SmwjeDNHxaB1urFE (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRkM2hEV1hKMVFUTlRiWGRxWlVST1NIaGhRakYxY2taRkJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTdhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlZWFZ5WVM1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMkYxY21FdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDE5LTAzLTIwVDExOjUwOjQ0Ljk2M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--9c28a2e5d7c3bc02f603643e5a19547342c51447/aura.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22aura.jpg%22%3B+filename%2A%3DUTF-8%27%27aura.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRkM2hEV1hKMVFUTlRiWGRxWlVST1NIaGhRakYxY2taRkJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTdhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlZWFZ5WVM1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMkYxY21FdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDE5LTAzLTIwVDExOjUwOjQ0Ljk2M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--9c28a2e5d7c3bc02f603643e5a19547342c51447/aura.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22aura.jpg%22%3B+filename%2A%3DUTF-8%27%27aura.jpg
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRkM2hEV1hKMVFUTlRiWGRxWlVST1NIaGhRakYxY2taRkJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTdhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlZWFZ5WVM1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMkYxY21FdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDE5LTAzLTIwVDExOjUwOjQ0Ljk2M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--9c28a2e5d7c3bc02f603643e5a19547342c51447/aura.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22aura.jpg%22%3B+filename%2A%3DUTF-8%27%27aura.jpg" for 127.0.0.1 at 2019-03-20 12:45:44 +0100
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"aura.jpg\"; filename*=UTF-8''aura.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRkM2hEV1hKMVFUTlRiWGRxWlVST1NIaGhRakYxY2taRkJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTdhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlZWFZ5WVM1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KMkYxY21FdWFuQm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUT0iLCJleHAiOiIyMDE5LTAzLTIwVDExOjUwOjQ0Ljk2M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--9c28a2e5d7c3bc02f603643e5a19547342c51447", "filename"=>"aura"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 12:45:48 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (51.0ms)
+Completed 200 OK in 72ms (Views: 70.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 12:46:00 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (50.2ms)
+Completed 200 OK in 74ms (Views: 72.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 12:46:05 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (68.7ms)
+Completed 200 OK in 86ms (Views: 84.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-03-20 12:46:07 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 19ms (Views: 17.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-20 12:46:09 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 12:46:11 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (33.0ms)
+Completed 200 OK in 51ms (Views: 50.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-03-20 12:46:29 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:62
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 23ms (Views: 20.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 12:46:31 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (62.6ms)
+Completed 200 OK in 80ms (Views: 78.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-20 12:46:34 +0100
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 22ms (Views: 21.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-20 12:46:41 +0100
+Processing by NotesController#index as HTML
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes"[0m
+  ↳ app/views/notes/index.html.erb:11
+  Rendered notes/index.html.erb within layouts/application (37.2ms)
+Completed 200 OK in 60ms (Views: 58.8ms | ActiveRecord: 0.3ms)
+
+
