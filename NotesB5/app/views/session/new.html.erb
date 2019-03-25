@@ -9,9 +9,11 @@
 	<%= label_tag :password %>
 	<%= password_field_tag :password, params[:password] %>
 </div>
-<div class="actions">
-	<%= submit_tag "Log in", class: "button" %>
-	<%= link_to 'New user',  new_user_path, class: "button" %>
+<div class = "col-xs-12 col-sm-12 col-md-6">
+	<div class="actions">
+		<%= submit_tag "Log in", class: "button" %>
+		<%= link_to 'New user',  new_user_path, class: "button" %>
+	</div>
 </div>
 
 

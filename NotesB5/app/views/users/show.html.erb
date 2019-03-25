@@ -2,8 +2,12 @@
 <div class="wrapper_with_padding">
 	<div class="row">
 	    <div class="col"><h1>My Profile</h1></div>
-	    <div class="col"><%= link_to "Admin users", users_path, class: "button" %></div>
-	    <div class="col"><%= link_to 'Edit profile', edit_user_path(@user), class: "button" %></div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-6">
+		<div class="actions">
+			<%= link_to "Admin users", users_path, class: "button" %>
+			<%= link_to 'Edit profile', edit_user_path(@user), class: "button" %>
+		</div>
 	</div>
 
 	<div class="row"><h2>About me</h2>
