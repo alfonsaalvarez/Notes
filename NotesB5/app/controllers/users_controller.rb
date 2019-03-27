@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    
   end
 
   # GET /users/1/edit
@@ -24,11 +24,9 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    byebug
-    @user=User.new
-    @user.admin=false
-    @user.name=params[:name]
-    @user.password=params[:password]
+    #byebug
+    @user=User.new(user_params)
+    #@user.admin=false #as default
 
     if @user.save
       redirect_to root_url, :notice => 'User was successfully created.'
@@ -70,6 +68,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user, :admin).permit(:name, :password)
+      params.require(:user).permit(:name, :password)
     end
 end
