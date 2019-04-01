@@ -5,8 +5,12 @@
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-6">
 		<div class="actions">
-			<%= link_to "Admin users", users_path, class: "button" %>
 			<%= link_to 'Edit profile', edit_user_path(@user), class: "button" %>
+			<%= link_to 'Delete profile', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
+
+			<% if @user.admin == true %>
+				<%= link_to "Admin users", users_path, class: "button" %>
+			<% end %>
 		</div>
 	</div>
 
@@ -26,12 +30,5 @@
 		</div>
 	</div>
 
-  
+
 </div>
-
-
-
-
-
-
- 

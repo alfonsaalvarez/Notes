@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def create
     #byebug
     @user=User.new(user_params)
-    @user.admin=true #as default
+    @user.admin=false #as default
 
     if @user.save
       redirect_to root_url, :notice => 'User was successfully created.'
@@ -52,10 +52,19 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    id=@user.id
+    byebug
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+      if id == session[:user_id]
+        format.html { redirect_to new_session_path, notice: 'User was successfully destroyed.' }
+        format.json { head :no_content }
+        session.destroy
+
+      else
+        format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -68,6 +77,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user, :admin).permit(:name, :password)
+      params.require(:user).permit(:name, :password, :admin)
     end
 end
