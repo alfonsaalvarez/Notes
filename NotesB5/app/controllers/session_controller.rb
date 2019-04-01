@@ -11,6 +11,8 @@ class SessionController < ApplicationController
     elsif @user.password == params[:password]
       session[:user]=@user.name
       session[:user_id]=@user.id
+      session[:admin]=@user.admin
+
       redirect_to notes_path, :notice => "Logged in!"
 
     else
@@ -25,10 +27,11 @@ class SessionController < ApplicationController
 
   def destroy
 	session[:user] = nil
+  reset_session
 	redirect_to :root, :notice => "Logged out!"
   end
 
   def session_params
-    params.require(:user_id, :password).permit(:user)
+    params.require(:user_id, :password, :admin).permit(:user)
   end
 end
