@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :friendships
   get 'images/index'
   get 'images/new'
   get 'images/show'
