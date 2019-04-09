@@ -37,6 +37,8 @@ class NoteCollectionsController < ApplicationController
     end
   end
 
+
+
   # PATCH/PUT /note_collections/1
   # PATCH/PUT /note_collections/1.json
   def update

@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     id=@user.id
-    byebug
+    
     @user.destroy
     respond_to do |format|
       if id == session[:user_id]

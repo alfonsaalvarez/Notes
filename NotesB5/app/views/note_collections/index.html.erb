@@ -1,31 +1,50 @@
-<p id="notice"><%= notice %></p>
+<%= javascript_include_tag 'application'%>
+<%= csrf_meta_tag %>
+<!-- No quitar!! -->
 
-<h1>Note Collections</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>User</th>
-      <th>Note</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @note_collections.each do |note_collection| %>
-      <tr>
-        <td><%= note_collection.name %></td>
-        <td><%= note_collection.user %></td>
-        <td><%= note_collection.note %></td>
-        <td><%= link_to 'Show', note_collection %></td>
-        <td><%= link_to 'Edit', edit_note_collection_path(note_collection) %></td>
-        <td><%= link_to 'Destroy', note_collection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="wrapper_with_padding">
+  <div class="clearfix" id="notes">
+	<div class="row">
+	    <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-6""><h1 class="title_notes">My Collections</h1>
+	    </div>
+	</div>
+	<div class="row">
+	    <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-6""><%= link_to "New Collection", new_note_collection_path, class: "button" %>
+	    </div>
+	</div>
+		<div class="col-xs-12 col-sm-6 col-md-4">
+	<% unless @note_collections.blank? %>
+	    <% @note_collections.each do |note_collection| %>
+	    <% if session[:user_id] == note_collection.user_id %>
+	      	<div class="collection">
+		  	<table>
+		    	<tr>
+			<td><%= note_collection.name %></td>
+			<td><%= link_to '', note_collection, class:"far fa-eye fa-2x" %></td>
+			<td><%= link_to '', edit_note_collection_path(note_collection), class: "fas fa-edit fa-2x"%></td>
+			<td><%= link_to '', note_collection, method: :delete, data: { confirm: 'Are you sure?' }, class:"fas fa-trash-alt fa-2x"%></td>
+		    	</tr>
+			<tr>
+       			 <td><%= note_collection.user %></td>
+       			 <td><%= note_collection.note %></td>
+			</tr>
+		   	</table>
+		   </div>
+	  	<% end %>
+    	<% end %>
+    <% else %>
+	    <div class="row">
+	    	<h2>Add a new collection</h2>
+	    </div>
+	    <div class="row">
+	    	<p>It seems that you haven't created any collection. Would you like to?</p>
+	    </div>
     <% end %>
-  </tbody>
-</table>
+    </div>
 
-<br>
 
-<%= link_to 'New Note Collection', new_note_collection_path %>
+
+
+  </div>
+</div>
+

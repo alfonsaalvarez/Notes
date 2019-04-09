@@ -19,10 +19,13 @@
 	    <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-6" style="background: #455A64">
 	      <nav>
     <% if session[:user_id] != nil %>
+ 
+      	<%= link_to "Admin users", users_path %>
+
       <%= link_to "My notes", notes_path %>
-      <%= link_to "My collections", notes_path %>
-		  <%= link_to 'My profile', user_path(session[:user_id])%>
-  		<%= link_to "Sing out", session_destroy_path %>
+      <%= link_to "My collections", note_collections_path %>
+      <%= link_to 'My profile', user_path(session[:user_id])%>
+      <%= link_to "Sign out", session_destroy_path %>
     <% else %>
       <%= link_to "Log In", new_session_path %>
     <% end %>

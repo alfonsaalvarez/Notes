@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'images/index'
   get 'images/new'
   get 'images/show'
-  #resources :note_collections
+  resources :note_collections
   get 'session/new'
   get 'session/create'
   get 'session/destroy'
