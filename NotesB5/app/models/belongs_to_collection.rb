@@ -1,0 +1,2 @@
+class BelongsToCollection < ApplicationRecord
+end

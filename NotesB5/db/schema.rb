@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_03_101242) do
+ActiveRecord::Schema.define(version: 2019_04_10_105509) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 2019_04_03_101242) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "belongs_to_collections", force: :cascade do |t|
+    t.integer "note_id_id"
+    t.integer "col_id_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["col_id_id"], name: "index_belongs_to_collections_on_col_id_id"
+    t.index ["note_id_id"], name: "index_belongs_to_collections_on_note_id_id"
+  end
+
   create_table "friendships", force: :cascade do |t|
     t.string "user1"
     t.string "user2"
@@ -43,10 +52,8 @@ ActiveRecord::Schema.define(version: 2019_04_03_101242) do
   create_table "note_collections", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
-    t.integer "note_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["note_id"], name: "index_note_collections_on_note_id"
     t.index ["user_id"], name: "index_note_collections_on_user_id"
   end
 
