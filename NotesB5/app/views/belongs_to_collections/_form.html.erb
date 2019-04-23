@@ -1,0 +1,17 @@
+<%= form_with(model: belongs_to_collection, local: true) do |form| %>
+  <% if belongs_to_collection.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(belongs_to_collection.errors.count, "error") %> prohibited this belongs_to_collection from being saved:</h2>
+
+      <ul>
+      <% belongs_to_collection.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

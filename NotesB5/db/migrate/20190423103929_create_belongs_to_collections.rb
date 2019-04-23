@@ -1,8 +1,7 @@
 class CreateBelongsToCollections < ActiveRecord::Migration[5.2]
   def change
-    create_table :belongs_to_collections do |t|
-      t.references :note_id
-      t.references :col_id
+	drop_table :belongs_to_collections    
+	create_table :belongs_to_collections do |t|
 
       t.timestamps
     end

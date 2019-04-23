@@ -1,0 +1,2 @@
+module BelongsToCollectionsHelper
+end
