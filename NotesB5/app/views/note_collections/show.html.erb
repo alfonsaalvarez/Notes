@@ -7,12 +7,23 @@
 
 <p>
   <strong>User:</strong>
-  <%= @note_collection.user %>
+  <%= @note_collection.user.name %>
 </p>
 
 <p>
-  <strong>Note:</strong>
-  <%= @note_collection.note %>
+<!-- %= @note_collection.note_collection %-->
+<% if BelongsToCollection.all.any? %>
+  <strong>Notes:</strong>
+    <% BelongsToCollection.all.each do |relationship| %>
+      <% if @note_collection.user_id == relationship.user_id%>
+      <strong> Note user: </strong>
+      <%= relationship.user_id %>
+      <%= relationship.col_id%>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>This collection doesn't seem to have any note.</p>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_note_collection_path(@note_collection) %> |

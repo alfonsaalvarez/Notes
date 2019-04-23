@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def create
     #byebug
     @user=User.new(user_params)
-    @user.admin=false #as default
+    @user.admin=true #as default
 
     if @user.save
       redirect_to root_url, :notice => 'User was successfully created.'
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     id=@user.id
-    
+
     @user.destroy
     respond_to do |format|
       if id == session[:user_id]
