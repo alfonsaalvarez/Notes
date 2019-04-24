@@ -15,8 +15,8 @@
   <div class="clearfix" id="notes">
     	<%= form.label :name %>
     	<%= form.text_field :name %>
-        <%= form.label :user_id %>
-    	<%= form.text_field :user_id %>
+        <!-- %= form.label :user_id %>
+    	< %= form.text_field :user_id % -->
 
 	<div class="col-xs-12 col-sm-6 col-md-4">
 		<% if Note.all.any? %>
@@ -31,7 +31,7 @@
 			    </tr>
 			   </table>
 			  </div>
-		  	
+
 		   <% end %>
 	    	<% end %>
 		<% else %>
