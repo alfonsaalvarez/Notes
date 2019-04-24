@@ -11,14 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :user1 %>
-    <%= form.text_field :user1 %>
-  </div>
+  <div class="col-xs-12 col-sm-6 col-md-4">
+	    <!-- % User.all.each do |user|%>
 
-  <div class="field">
-    <%= form.label :user2 %>
-    <%= form.text_field :user2 %>
+	      	<div class="friend">
+		  	<table>
+		    	<tr>
+				<td><!%= user.name %></td>
+				<td><!%= link_to '', friendships_create_path(user1: user.name, user2: user.name), class:"fas fa-plus fa-2x" %></td>
+		    	</tr>
+		   		</table>
+		   </div-->
+    	<!-- % end %-->
+
+      <%=form.select(:user2, options_for_select(User.all)) %>
+
+
+
   </div>
 
   <div class="actions">

@@ -1,14 +1,19 @@
 Rails.application.routes.draw do
   resources :belongs_to_collections
   resources :friendships
-  get 'images/index'
-  get 'images/new'
-  get 'images/show'
+get 'friendships/new'
+get 'friendships/create'
+get 'friendships/destroy'
+
+get 'images/index'
+get 'images/new'
+get 'images/show'
+
   resources :note_collections
-  get 'session/new'
-  get 'session/create'
-  get 'session/destroy'
-  get 'session/show'
+get 'note_collections/new'
+get 'note_collections/create'
+get 'note_collections/destroy'
+
   #resources :notes
   #resources :users
 
@@ -18,7 +23,12 @@ Rails.application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   post 'images' => 'images#create'
   resources :users
+
   resources :session
+ get 'session/new'
+ get 'session/create'
+ get 'session/destroy'
+ get 'session/show'
   resources :notes
   #root :to => "notes#index"
   root :to => "session#new"

@@ -1,6 +1,5 @@
 class CreateBelongsToCollections < ActiveRecord::Migration[5.2]
-  def change
-	drop_table :belongs_to_collections    
+  def change 
 	create_table :belongs_to_collections do |t|
 
       t.timestamps

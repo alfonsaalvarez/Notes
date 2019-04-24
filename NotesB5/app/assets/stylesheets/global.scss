@@ -48,6 +48,18 @@ body {
 	background-color:#d2dce0;
 }
 
+.wrapper_with_padding3 {
+	width: 80%;
+	margin-top:50px;
+	margin-left:12%;
+	margin-bottom:10%;
+	padding: 30px 50px 30px 50px;
+	border-radius: 50px;
+	font-size: 16px;
+	text-align:left;
+	background-color:lightgrey;
+}
+
 .clearfix:before, .clearfix:after {
 	content: " ";
 	display: table;
