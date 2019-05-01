@@ -9,7 +9,7 @@
 <div class="clearfix" id="notes">
 	<% if @friendships.any? %>
 	    <% @friendships.each do |friends| %>
-		 <% if friends.id == session[:user_id] %> <!-- Que compruebe friends.user1.id con algún metodo -->
+		 <% if friends.user1 == session[:user] %> <!-- Que compruebe friends.user1.id con algún metodo -->
  		    <div class="note">
 			<table>
 		    	<tr>

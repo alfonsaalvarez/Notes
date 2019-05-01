@@ -35,34 +35,28 @@
 		  <%= link_to "New Friend", new_friendship_path, class: "button" %>
 		  <%= link_to "Pending requests", new_friendship_path, class: "button" %></div>
 	</div>
-	 <div class="field">
-		<div class="col-xs-12 col-sm-6 col-md-4">
-		<% if Friendship.all.any? %>
-		    <% Friendship.all.each do |friendship| %>
-		    <% if session[:user_id] == friendship.user1 %>
-		      	<div class="friendship">
-			  <table>
-			    <tr>
-				<td><%= friendship.user2 %></td>
-				<td><%= link_to '', friendship, method: :delete, data: { confirm: 'Are you sure?' }, class:"fas fa-trash-alt fa-2x"%></td>
-
-			    </tr>
-			   </table>
-			  </div>
-		  	
-		   <% end %>
-	    	<% end %>
-		<% else %>
-		    <div class="row">
-		    	<div class="col"><h3>Add a new friend</h></div>
+	 
+	<div class="col-xs-12 col-sm-6 col-md-4">
+<div class="clearfix" id="notes">
+	<% if Friendship.any? %>
+	    <% Friendship.all.each do |friendship| %>
+		 <% if friendship.user1 == session[:user] %> <!-- Que compruebe friends.user1.id con algún metodo -->
+ 		    <div class="note">
+			<table>
+		    	<tr>
+			<td><%= friendship.user2 %></td>
+			<td><%= link_to '', friendship, method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash-alt fa-2x" %></td>
+			</tr>
+		   	</table>
 		    </div>
-		    <div class="row">
-		    	<p>It seems that you haven't created any note. Would you like to?</p>
-		    </div>
+		<% end %>
 	    <% end %>
-	    </div>
-	  </div>
-
+	  <%else%>
+		<th>You do not have any friendships</th>
+	  <%end%>
+  
+	</div>
+</div>
 
 
 
