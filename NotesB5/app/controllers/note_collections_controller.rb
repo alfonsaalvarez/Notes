@@ -27,7 +27,7 @@ class NoteCollectionsController < ApplicationController
   # POST /note_collections.json
   def create
     @note_collection = NoteCollection.new(note_collection_params)
-    @note_collection.user_id=session[:user_id]
+    @note_collection.user_id = session[:user_id]
 
     respond_to do |format|
       if @note_collection.save
@@ -74,6 +74,6 @@ class NoteCollectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_collection_params
-      params.require(:note_collection).permit(:name, :user_id)
+      params.require(:note_collection).permit(:name, :user_id, :note_id)
     end
 end

@@ -1,3 +1,4 @@
+
 <%= form_with(model: friendship, local: true) do |form| %>
   <% if friendship.errors.any? %>
     <div id="error_explanation">
@@ -10,7 +11,12 @@
       </ul>
     </div>
   <% end %>
-
+<%@list=Array.new %>
+<% User.all.each do |user| %>
+  <% unless user.name == session[:user] %>
+  <% @list.push user.name %>
+  <% end %>
+<% end %>
   <div class="col-xs-12 col-sm-6 col-md-4">
 	    <!-- % User.all.each do |user|%>
 
@@ -24,7 +30,7 @@
 		   </div-->
     	<!-- % end %-->
 
-      <%=form.select(:user2, options_for_select(User.all)) %>
+      <%=form.select(:user2, options_for_select(@list)) %>
 
 
 
