@@ -1,0 +1,44 @@
+
+<%= form_with(model: resquest, local: true) do |form| %>
+  <% if resquest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(resquest.errors.count, "error") %> prohibited this resquest from being saved:</h2>
+
+      <ul>
+      <% resquest.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%@list=Array.new %>
+<% User.all.each do |user| %>
+  <% unless user.name == session[:user] %>
+  <% @list.push user.name %>
+  <% end %>
+<% end %>
+
+  <div class="col-xs-12 col-sm-6 col-md-4">
+      <!-- % User.all.each do |user|%>
+
+          <div class="friend">
+        <table>
+          <tr>
+        <td><!%= user.name %></td>
+        <td><!%= link_to '', friendships_create_path(user1: user.name, user2: user.name), class:"fas fa-plus fa-2x" %></td>
+          </tr>
+          </table>
+       </div-->
+      <!-- % end %-->
+
+      <%=form.select(:user2, options_for_select(@list)) %>
+
+
+
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

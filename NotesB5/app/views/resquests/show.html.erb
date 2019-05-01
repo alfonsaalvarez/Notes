@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User1:</strong>
+  <%= @resquest.user1 %>
+</p>
+
+<p>
+  <strong>User2:</strong>
+  <%= @resquest.user2 %>
+</p>
+
+<%= link_to 'Edit', edit_resquest_path(@resquest) %> |
+<%= link_to 'Back', user_path(session[:user_id]) %>
