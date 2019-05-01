@@ -14,11 +14,11 @@
 <!-- %= @note_collection.note_collection %-->
 <% if BelongsToCollection.all.any? %>
   <strong>Notes:</strong>
-    <% BelongsToCollection.all.each do |relationship| %>
-      <% if @note_collection.user_id == relationship.user_id%>
+    <% BelongsToCollection.all.each do |belongs| %>
+      <% if @note_collection.user_id == belongs[:user_id]%>
       <strong> Note user: </strong>
-      <%= relationship.user_id %>
-      <%= relationship.col_id%>
+      <%= belongs[:user_id] %>
+      <%= belongs[:col_id]%>
       <% end %>
     <% end %>
   <% else %>

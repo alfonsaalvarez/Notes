@@ -26,7 +26,7 @@
 			<td><%= link_to '', note_collection, method: :delete, data: { confirm: 'Are you sure?' }, class:"fas fa-trash-alt fa-2x"%></td>
 		    	</tr>
 			<tr>
-       			 <td><%= note_collection.user %></td>
+       			 <td><%= note_collection.user.name %></td>
        			 <!--td><%= note_collection.notes %></td-->
              <% BelongsToCollection.all.each do |belongs| %>
               <% if belongs.col_id == note_collection.id %>
