@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :belongs_to_collections
   resources :friendships
+  resources :requests
 get 'friendships/new'
 get 'friendships/create'
 get 'friendships/destroy'
@@ -14,6 +15,10 @@ get 'note_collections/new'
 get 'note_collections/create'
 get 'note_collections/destroy'
 get 'note_collections/addnote'
+
+get 'resquests/index'
+get 'resquests/new'
+get 'resquests/show'
 
   resources :belongs_to_collection
 get 'belongs_to_collection/new'
