@@ -32,11 +32,37 @@
 	<div class="row">
 		<div class="col"><h2>My friends</h2></div>
 		<div class="col">
-		  <%= link_to "New Friend", new_resquest_path, class: "button" %>
-		  <%= link_to "Pending requests", resquests_path, class: "button" %></div>
+		  <%= link_to "New Friend", new_request_path, class: "button" %>
+		  <%= link_to "Pending requests", requests_path, class: "button" %></div>
 	</div>
-	 
-	<div class="col-xs-12 col-sm-6 col-md-4">
+	 <div class="field">
+		<div class="col-xs-12 col-sm-6 col-md-4">
+		<% if Friendship.all.any? %>
+		    <% Friendship.all.each do |friendship| %>
+		    <% if session[:user_id] == friendship.user1 %>
+		      	<div class="friendship">
+			  <table>
+			    <tr>
+				<td><%= friendship.user2 %></td>
+				<td><%= link_to '', friendship, method: :delete, data: { confirm: 'Are you sure?' }, class:"fas fa-trash-alt fa-2x"%></td>
+
+			    </tr>
+			   </table>
+			  </div>
+		  	
+		   <% end %>
+	    	<% end %>
+		<% else %>
+		    <div class="row">
+		    	<div class="col"><h3>Add a new friend</h></div>
+		    </div>
+		    <div class="row">
+		    	<p>It seems that you haven't created any note. Would you like to?</p>
+		    </div>
+	    <% end %>
+	    </div>
+	  </div>
+<div class="col-xs-12 col-sm-6 col-md-4">
 <div class="clearfix" id="notes">
 	<% if Friendship.any? %>
 	    <% Friendship.all.each do |friendship| %>

@@ -13,7 +13,12 @@ get 'images/show'
 get 'note_collections/new'
 get 'note_collections/create'
 get 'note_collections/destroy'
+get 'note_collections/addnote'
 
+  resources :belongs_to_collection
+get 'belongs_to_collection/new'
+get 'belongs_to_collection/create'
+get 'belongs_to_collection/destroy'
   #resources :notes
   #resources :users
 
