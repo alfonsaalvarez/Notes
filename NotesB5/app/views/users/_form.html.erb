@@ -21,15 +21,15 @@
     <%= form.text_field :password %>
   </div>
 
-  <% if session[:admin] == true %>
+
   <div class="field">
     <%= form.label :admin %>
-    <%= form.select(:admin, options_for_select([false, true])) %>
+    <%= form.select(:admin, options_for_select([true, false])) %>
 
   </div>
-  <% end %>
+
 
   <div class="actions">
-    <%= form.submit "New user", class: "button" %>
+    <%= form.submit "Save", class: "button" %>
   </div>
 <% end %>

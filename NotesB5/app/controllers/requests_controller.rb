@@ -26,6 +26,8 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     @request.user1=session[:user]
+    @request.accepted=false
+
     respond_to do |format|
       if @request.save
         format.html { redirect_to @request, notice: 'Request was successfully created.' }

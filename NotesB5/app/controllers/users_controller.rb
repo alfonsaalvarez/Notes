@@ -26,7 +26,6 @@ class UsersController < ApplicationController
   def create
     #byebug
     @user=User.new(user_params)
-  #  @user.admin=true #as default
 
     if @user.save
       redirect_to root_url, :notice => 'User was successfully created.'
