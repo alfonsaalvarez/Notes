@@ -4,6 +4,12 @@
 <%= render 'form', user: @user %>
 <div class="actions">
 	<%= link_to 'Show', @user, class: "button" %> |
-	<%= link_to 'Back', users_path, class: "button" %>
+
+	<% if session[:admin] == true %>
+		<%= link_to 'Back', users_path, class: "button" %>
+	<% else %>
+		<%= link_to 'Back', @user, class: "button" %>
+	<% end %>
+	
 </div>
 </div>
