@@ -2,17 +2,17 @@
 
 <p>
   <strong>Note:</strong>
-  <%= @shared_note.note %>
+  <%= @shared_note.note.title %>
 </p>
 
 <p>
   <strong>User1:</strong>
-  <%= @shared_note.user1 %>
+  <%= @shared_note.o_user.name %>
 </p>
 
 <p>
   <strong>User2:</strong>
-  <%= @shared_note.user2 %>
+  <%= @shared_note.d_user.name %>
 </p>
 
 <%= link_to 'Edit', edit_shared_note_path(@shared_note) %> |

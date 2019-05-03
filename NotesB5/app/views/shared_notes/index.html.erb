@@ -15,9 +15,9 @@
   <tbody>
     <% @shared_notes.each do |shared_note| %>
       <tr>
-        <td><%= shared_note.note %></td>
-        <td><%= shared_note.user1 %></td>
-        <td><%= shared_note.user2 %></td>
+        <td><%= shared_note.note.title %></td>
+        <td><%= shared_note.o_user.name %></td>
+        <td><%= shared_note.d_user.name %></td>
         <td><%= link_to 'Show', shared_note %></td>
         <td><%= link_to 'Edit', edit_shared_note_path(shared_note) %></td>
         <td><%= link_to 'Destroy', shared_note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
