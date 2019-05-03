@@ -7,7 +7,7 @@ get 'friendships/new'
 get 'friendships/create'
 get 'friendships/destroy'
 
-get 'images/index'
+get 'note/share'
 get 'images/new'
 get 'images/show'
 
