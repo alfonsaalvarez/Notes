@@ -1,19 +1,25 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User1:</strong>
-  <%= @request.user1 %>
-</p>
+<div class="wrapper_with_padding2">
+<p id="notice"><%= notice %></p><br>
+  <div id="note_show">
+	<div class="field">
+	  <strong>User1:</strong>
+	  <%= @request.user1 %>
+	</div>
 
-<p>
-  <strong>User2:</strong>
-  <%= @request.user2 %>
-</p>
+	<div class="field">
+	  <strong>User2:</strong>
+	  <%= @request.user2 %>
+	</div>
 
-<p>
-  <strong>Accepted:</strong>
-  <%= @request.accepted %>
-</p>
-
-<%= link_to 'Edit', edit_request_path(@request) %> |
-<%= link_to 'Back', user_path(session[:user_id]) %>
+	<div class="field">
+	  <strong>Accepted:</strong>
+	  <%= @request.accepted %>
+	</div>
+<br><br>
+	<div class="actions">
+		<%= link_to 'Edit', edit_request_path(@request), class: "button"   %> |
+		<%= link_to 'Back', user_path(session[:user_id]), class: "button"   %>
+	</div>
+  </div>
+</div>
