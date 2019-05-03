@@ -25,10 +25,14 @@ class SharedNotesController < ApplicationController
   # POST /shared_notes.json
   def create
     @shared_note = SharedNote.new(shared_note_params)
+    @shared_note.o_user_id = session[:user_id]
+    @shared_note.d_user_id=User.find(@shared_note.d_user_id)
+    @shared_note.note_id=params[:note_id]
+    byebug
 
     respond_to do |format|
       if @shared_note.save
-        format.html { redirect_to @shared_note, notice: 'Shared note was successfully created.' }
+        format.html { redirect_to @shared_note, notice: 'Note was successfully shared.' }
         format.json { render :show, status: :created, location: @shared_note }
       else
         format.html { render :new }
@@ -56,7 +60,7 @@ class SharedNotesController < ApplicationController
   def destroy
     @shared_note.destroy
     respond_to do |format|
-      format.html { redirect_to shared_notes_url, notice: 'Shared note was successfully destroyed.' }
+      format.html { redirect_to shared_notes_url, notice: 'This note is no longer being shared.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +73,6 @@ class SharedNotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shared_note_params
-      params.require(:shared_note).permit(:note_id, :user1_id, :user2_id)
+      params.require(:shared_note).permit(:note_id, :o_user_id, :d_user_id)
     end
 end

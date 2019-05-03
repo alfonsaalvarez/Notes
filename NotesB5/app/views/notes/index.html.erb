@@ -20,7 +20,7 @@
 			    <td><%= note.title %></td>
 			    <td><%= link_to '', note, class:"far fa-eye fa-2x" %></td>
 			    <td><%= link_to '', edit_note_path(note), class: "fas fa-edit fa-2x"%></td>
-			    <td><%= link_to '', edit_note_path(note), class: "fas fa-share-alt fa-2x"%></td>
+			    <td><%= link_to '', new_shared_note_path(note_id: note.id), mehtod: "put", class: "fas fa-share-alt fa-2x"%></td>
 			    <td><%= link_to '', note, method: :delete, data: { confirm: 'Are you sure?' }, class:"fas fa-trash-alt fa-2x"%></td>
 		    	</tr>
 		   	</table>
@@ -38,7 +38,7 @@
     </div>
 </div>
 </div>
-    
+
 
 
 <% if session[:admin] == true %>
@@ -73,6 +73,3 @@
     </div>
   </div>
 </div>
-
-
-
