@@ -10,22 +10,27 @@
       </ul>
     </div>
   <% end %>
+
+  <%= form.hidden_field :col_id, :name=>"col_id", :value=>:col_id%>
+
   <div class="col-xs-12 col-sm-6 col-md-4">
     <% if Note.all.any? %>
-        <% Note.all.each do |note| %>
-        <% if session[:user_id] == note.user_id %>
+        <!-- % Note.all.each do |note| %>
+        < % if session[:user_id] == note.user_id %>
             <div class="note">
         <table>
           <tr>
-        <td><%= note.title %></td>
-        <td><%= link_to '', new_belongs_to_collection_path(col_id: :col_id, note_id: note.id), method: "put", class:"fas fa-plus fa-2x" %></td>
+        <td>< %= note.title %></td>
+        <td>< %= link_to '', new_belongs_to_collection_path(col_id: :col_id, note_id: note.id), method: "put", class:"fas fa-plus fa-2x" %></td>
 
           </tr>
          </table>
         </div>
 
-       <% end %>
-        <% end %>
+       < % end %>
+        < % end % -->
+        <%=form.select(:note_id, Note.all, { :promt=>"Choose notes"}, { :multiple=>true})%>
+        
     <% else %>
         <div class="row">
           <h2>Add a new note</h2>
@@ -36,7 +41,6 @@
         </div>
       <% end %>
     </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
