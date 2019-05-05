@@ -4,7 +4,7 @@
 <div class="wrapper_with_padding">
 	<div class="row">
 	    <div class="col"><h1>My Profile</h1></div>
-	
+
 	     <div class="col-xs-12 col-sm-12 col-md-6">
 		<div class="actions">
 			<%= link_to 'Edit profile', edit_user_path(@user), class: "button" %>
@@ -55,7 +55,7 @@
 			    </tr>
 			   </table>
 			  </div>
-		  	
+
 		   <% end %>
 	    	<% end %>
 		<% else %>
@@ -86,12 +86,29 @@
 	  <%else%>
 		<th>You do not have any friendships</th>
 	  <%end%>
-  
+
 	</div>
 </div>
+<div class="col-xs-12 col-sm-6 col-md-4">
+<div class="clearfix" id="notes">
+  <% if Friendship.any? %>
+      <% Friendship.all.each do |friendship| %>
+     <% if friendship.user2 == session[:user] %> <!-- Que compruebe friends.user1.id con algún metodo -->
+         <div class="note">
+      <table>
+          <tr>
+      <td><%= friendship.user1 %></td>
+      <td><%= link_to '', friendship, method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash-alt fa-2x" %></td>
+      </tr>
+         </table>
+        </div>
+    <% end %>
+      <% end %>
+    <%else%>
+    <th>You do not have any friendships</th>
+    <%end%>
 
-
-
-
+  </div>
+</div>
 
 </div>

@@ -16,7 +16,7 @@ class SessionController < ApplicationController
       redirect_to notes_path, :notice => "Logged in!"
     end
 
-   
+
 
 #  session[:user]=@user.name
 #  redirect_to notes_path, :notice => "Logged in!"
