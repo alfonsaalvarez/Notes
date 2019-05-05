@@ -12,17 +12,18 @@
 
 <p>
 <!-- %= @note_collection.note_collection %-->
-<% if BelongsToCollection.all.any? %>
+<% if BelongsToCollection.all.include?(@note_collection.id) %>
   <strong>Notes:</strong>
     <% BelongsToCollection.all.each do |belongs| %>
       <% if @note_collection.user_id == belongs[:user_id]%>
-      <strong> Note user: </strong>
-      <%= belongs[:user_id] %>
-      <%= belongs[:col_id]%>
+        <strong> Note user: </strong>
+        <%= belongs[:user_id] %>
+        <%= belongs[:col_id]%>
       <% end %>
     <% end %>
   <% else %>
     <p>This collection doesn't seem to have any note.</p>
+    <p> <%= link_to 'Add notes?', new_belongs_to_collection_path(col_id: @note_collection.id) %> </p>
   <% end %>
 </p>
 

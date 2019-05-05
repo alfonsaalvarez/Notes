@@ -26,8 +26,10 @@ class SharedNotesController < ApplicationController
   def create
     @shared_note = SharedNote.new(shared_note_params)
     @shared_note.o_user_id = session[:user_id]
-    @shared_note.note_id=params[:note_id]
     byebug
+    @shared_note.d_user_id = User.find_by(name: params[:d_user_name])
+    @shared_note.note_id=params[:note_id]
+    #byebug
 
     respond_to do |format|
       if @shared_note.save

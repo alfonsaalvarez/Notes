@@ -12,15 +12,25 @@
   <% end %>
 
   <%= form.hidden_field :note_id, :name=>"note_id", :value=>1 %>
+  <%= form.hidden_field :shared_notes_params, :name=>"d_user_name", :value=>0 %>
 
-  <!-- div class="field">
-    < %= form.label :user1_id %>
-    < %= form.text_field :user1_id %>
-  </div -->
+  <%@list=Array.new %>
+  <% Friendship.all.each do |friendship| %>
+    <% if friendship.user1 == session[:user] %>
+      <% @list.push friendship.user2 %>
+
+    <% else %>
+      <% if friendship.user2 == session[:user] %>
+        <% @list.push friendship.user1 %>
+
+      <% end %>
+    <% end %>
+   <% end %>
+
 
   <div class="field">
-    <%= form.label :d_user_id %>
-    <%= form.text_field :d_user_id %>
+    <%= form.select(:d_user_name, options_for_select(@list))  %>
+    <!-- %= form.text_field :d_user_id % -->
   </div>
 
   <div class="actions">

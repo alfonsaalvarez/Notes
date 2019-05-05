@@ -70,6 +70,6 @@ class BelongsToCollectionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def belongs_to_collection_params
       #params.fetch(:belongs_to_collection, {})
-      params.permit(:note_id, :col_id)
+      params.require(:belongs_to_collection).permit(:note_id, :col_id)
     end
 end

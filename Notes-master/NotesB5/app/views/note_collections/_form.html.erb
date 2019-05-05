@@ -16,33 +16,6 @@
     	<%= form.label :name %>
     	<%= form.text_field :name %>
 
-	<div class="col-xs-12 col-sm-6 col-md-4">
-		<% if Note.all.any? %>
-		    <% Note.all.each do |note| %>
-		    <% if session[:user_id] == note.user_id %>
-		      	<div class="note">
-			  <table>
-			    <tr>
-				<td><%= note.title %></td>
-				<td><%= link_to '', note_collections_create_path(note_collection_name: @note_collection.name, note_id: note.id), method: "put", class:"fas fa-plus fa-2x" %></td>
-
-			    </tr>
-			   </table>
-			  </div>
-
-		   <% end %>
-	    	<% end %>
-		<% else %>
-		    <div class="row">
-		    	<h2>Add a new note</h2>
-		    </div>
-		    <div class="row">
-		    	<p>It seems that you haven't created any note. Would you like to?</p>
-			<%= link_to "New Note", new_note_path, class: "button" %>
-		    </div>
-	    <% end %>
-    </div>
-
 	  <div class="actions">
 	    <%= form.submit "Save", class: "button"%>
 	    <%= link_to 'Back', note_collections_path, class: "button"  %>
