@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :shared_collections
   resources :shared_notes
   resources :belongs_to_collections
   resources :friendships

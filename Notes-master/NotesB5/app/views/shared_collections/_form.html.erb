@@ -1,0 +1,32 @@
+<%= form_with(model: shared_collection, local: true) do |form| %>
+  <% if shared_collection.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(shared_collection.errors.count, "error") %> prohibited this shared_collection from being saved:</h2>
+
+      <ul>
+      <% shared_collection.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :note_collection_id %>
+    <%= form.text_field :note_collection_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :o_user_id %>
+    <%= form.text_field :o_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :d_user_id %>
+    <%= form.text_field :d_user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

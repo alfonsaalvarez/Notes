@@ -1,0 +1,2 @@
+module SharedCollectionsHelper
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_03_130940) do
+ActiveRecord::Schema.define(version: 2019_05_05_172023) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -72,6 +72,17 @@ ActiveRecord::Schema.define(version: 2019_05_03_130940) do
     t.boolean "accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "shared_collections", force: :cascade do |t|
+    t.integer "note_collection_id"
+    t.integer "o_user_id"
+    t.integer "d_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["d_user_id"], name: "index_shared_collections_on_d_user_id"
+    t.index ["note_collection_id"], name: "index_shared_collections_on_note_collection_id"
+    t.index ["o_user_id"], name: "index_shared_collections_on_o_user_id"
   end
 
   create_table "shared_notes", force: :cascade do |t|
