@@ -1,0 +1,40 @@
+<div class="wrapper_with_padding">
+  <div id="note_show">
+    <h1> <%= @note_collection.name %></h1>
+
+    <p id="notice"><%= notice %></p>
+<!--
+<p>
+  <strong>Name:</strong>
+  <%= @note_collection.name %>
+</p>
+-->
+
+    <div class="field">
+      <strong>User:</strong>
+      <%= @note_collection.user.name %>
+    </div>
+
+  <p>
+  <!-- %= @note_collection.note_collection %-->
+  <% if BelongsToCollection.all.include?(@note_collection.id) %>
+    <strong>Notes:</strong>
+    <div id="note">
+      <% BelongsToCollection.all.each do |belongs| %>
+        <% if @note_collection.user_id == belongs[:user_id]%>
+          <strong> Note user: </strong>
+          <%= belongs[:user_id] %>
+          <%= belongs[:col_id]%>
+        <% end %>
+      <% end %>
+      </div>
+    <% else %>
+      <p>This collection doesn't seem to have any note.</p>
+      <%= link_to 'Add notes', new_belongs_to_collection_path(col_id: @note_collection.id), class: "button" %>
+    <% end %>
+  </p>
+
+<%= link_to 'Edit', edit_note_collection_path(@note_collection), class: "button" %>
+<%= link_to 'Back', note_collections_path, class: "button" %>
+</div>
+</div>

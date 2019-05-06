@@ -1,0 +1,33 @@
+<div class="wrapper_with_padding">
+  <div id="note_show">
+    <h1><%= @note.title %></h1>
+
+	<p id="notice"><%= notice %></p>
+
+	<div class="field">
+	  <p><strong>User:  </strong>
+	  <%= @note.user.name %></p>
+	</div>
+
+	<div class="field">
+	  <p><strong>Text:</strong>
+	  <br><%= @note.text %></p>
+	</div>
+
+	<div class="field">
+	  <% if @note.image.attached? %>
+	    <%= image_tag @note.image %>
+	  <% end %>
+
+	  <!-- img id="photo" src=@note.image onerror="" alt="Espacio cargar la imagen">
+	   <br><br>
+	   </div> -->
+	</div>
+
+	<div class="actions">
+		<%= link_to 'Edit', edit_note_path(@note), class: "button"  %>
+		<%= link_to 'Back', notes_path, class: "button"  %>
+	</div>
+</div>
+</div>
+

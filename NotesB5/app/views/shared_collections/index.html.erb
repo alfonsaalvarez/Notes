@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shared Collections</h1>
+
+<table style="width: 100%;">
+  <thead>
+    <tr>
+      <th>Note collection</th>
+      <th>O user</th>
+      <th>D user</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody style="width: 100%;">
+    <% @shared_collections.each do |shared_collection| %>
+      <tr id="belongs">
+        <td id="bel"><%= shared_collection.note_collection %></td>
+        <td><%= shared_collection.o_user %></td>
+        <td><%= shared_collection.d_user %></td>
+        <td><%= link_to '', shared_collection, class:"far fa-eye fa-2x" %></td>
+        <td><%= link_to '', edit_shared_collection_path(shared_collection), class: "fas fa-edit fa-2x" %></td>
+        <td><%= link_to '', shared_collection, method: :delete, data: { confirm: 'Are you sure?' }, class:"fas fa-trash-alt fa-2x" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shared Collection', new_shared_collection_path, class: "button" %>

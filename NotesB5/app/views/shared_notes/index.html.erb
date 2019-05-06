@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shared Notes</h1>
+
+<table style="width: 100%;">
+  <thead>
+    <tr>
+      <th>Note</th>
+      <th>User1</th>
+      <th>User2</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody style="width: 100%;">
+    <% @shared_notes.each do |shared_note| %>
+      <tr id="belongs">
+        <td id="bel"><%= shared_note.note.title %></td>
+        <td><%= shared_note.o_user.name %></td>
+        <td><%= shared_note.d_user.name %></td>
+        <td><%= link_to '', shared_note, class:"far fa-eye fa-2x" %></td>
+        <td><%= link_to '', edit_shared_note_path(shared_note), class: "fas fa-edit fa-2x"  %></td>
+        <td><%= link_to '', shared_note, method: :delete, data: { confirm: 'Are you sure?' }, class:"fas fa-trash-alt fa-2x" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shared Note', new_shared_note_path, class: "button" %>

@@ -1,0 +1,24 @@
+<div class="wrapper_with_padding">
+<div id="note_show">
+<h1><%= @shared_collection.note_collection %></h1>
+<p id="notice"><%= notice %></p>
+
+<!--<p>
+  <strong>Note collection:</strong>
+  <%= @shared_collection.note_collection %>
+</p>-->
+
+<div class="field">
+  <strong>O user:</strong>
+  <%= @shared_collection.o_user %>
+</div>
+
+<div class="field">
+  <strong>D user:</strong>
+  <%= @shared_collection.d_user %>
+</div>
+
+<%= link_to 'Edit', edit_shared_collection_path(@shared_collection), class: "button" %>
+<%= link_to 'Back', shared_collections_path, class: "button" %>
+</div>
+</div>

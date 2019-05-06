@@ -1,0 +1,18 @@
+<div class="wrapper_with_padding">
+	<div id="note_show">
+		<p id="notice"><%= notice %></p>
+
+<div class="field">
+  <strong>User1:</strong>
+  <%= @friendship.user1 %>
+</div>
+
+<div class="field">
+  <strong>User2:</strong>
+  <%= @friendship.user2 %>
+</div>
+
+<%= link_to 'Edit', edit_friendship_path(@friendship), class: "button"  %> 
+<%= link_to 'Back', user_path(session[:user_id]), class: "button"  %>
+</div>
+</div>

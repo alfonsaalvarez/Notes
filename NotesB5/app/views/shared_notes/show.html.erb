@@ -1,0 +1,24 @@
+<div class="wrapper_with_padding">
+<div id="note_show">
+	<h1> <%= @shared_note.note.title %> </h1>
+<p id="notice"><%= notice %></p>
+
+<!--<p>
+  <strong>Note:</strong>
+  <%= @shared_note.note.title %>
+</p>-->
+
+<div class="field">
+  <strong>User1:</strong>
+  <%= @shared_note.o_user.name %>
+</div>
+
+<div class="field">
+  <strong>User2:</strong>
+  <%= @shared_note.d_user.name %>
+</div>
+
+<%= link_to 'Edit', edit_shared_note_path(@shared_note), class: "button" %> 
+<%= link_to 'Back', shared_notes_path, class: "button" %>
+</div>
+</div>

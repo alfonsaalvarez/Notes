@@ -1,0 +1,39 @@
+<%= form_with(model: shared_note, local: true) do |form| %>
+  <% if shared_note.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(shared_note.errors.count, "error") %> prohibited this shared_note from being saved:</h2>
+
+      <ul>
+      <% shared_note.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :note_id, :name=>"note_id", :value=>1 %>
+  <%= form.hidden_field :shared_notes_params, :name=>"d_user_name", :value=>0 %>
+
+  <%@list=Array.new %>
+  <% Friendship.all.each do |friendship| %>
+    <% if friendship.user1 == session[:user] %>
+      <% @list.push friendship.user2 %>
+
+    <% else %>
+      <% if friendship.user2 == session[:user] %>
+        <% @list.push friendship.user1 %>
+
+      <% end %>
+    <% end %>
+   <% end %>
+
+
+  <div class="field">
+    <%= form.select(:d_user_name, options_for_select(@list))  %>
+    <!-- %= form.text_field :d_user_id % -->
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Share note', class: "button"  %>
+  </div>
+<% end %>

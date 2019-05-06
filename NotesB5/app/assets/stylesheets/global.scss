@@ -1,0 +1,546 @@
+$dark_gray: #2B2E2E;
+$light_gray: #C0C1C1;
+$orange: #F5B361;
+
+@mixin bold_font {
+	font-family: "Brandon Grotesque","Helvetica Neue", Helvetica, sans-serif;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+* {
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+	padding-top: 4.5rem;
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.wrapper {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.wrapper_with_padding {
+	width: 80%;
+	margin-top:50px;
+	margin-left:12%;
+	padding: 30px 50px 30px 50px;
+	border-radius: 50px;
+	font-size: 16px;
+	text-align:left;
+	background-color:#d2dce0;
+}
+
+
+.wrapper_with_padding2 {
+	width: 50%;
+	margin-top:50px;
+	margin-left:25%;
+	margin-bottom:10%;
+	padding: 30px 50px 30px 50px;
+	border-radius: 50px;
+	font-size: 16px;
+	text-align:left;
+	background-color:#d2dce0;
+}
+
+.wrapper_with_padding3 {
+	width: 80%;
+	margin-top:50px;
+	margin-left:12%;
+	margin-bottom:10%;
+	padding: 30px 50px 30px 50px;
+	border-radius: 50px;
+	font-size: 16px;
+	text-align:left;
+	background-color:lightgrey;
+}
+
+.clearfix:before, .clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+button, .button {
+	border: 5px solid #455A64;
+	outline: none;
+	background: transparent;
+	padding: 1rem 2rem;
+	border-radius: 2rem;
+	@include bold_font;
+	color: #455A64;
+	a {
+		color: #455A64;
+		text-decoration: none;
+		@include bold_font;
+	}
+	&:hover {
+		background: #455A64;
+		color:white;
+	}
+}
+
+.buttonFriend {
+	margin-left: 30%;
+	width:30%;
+	display:block;
+	text-align: center;
+	color: #455A64;
+	background: white;
+	margin: 2rem 0;
+	@include bold_font;
+}
+
+.button {
+	width:30%;
+	display:block;
+	text-align: center;
+	color: #455A64;
+	background: white;
+	margin: 2rem 0;
+	@include bold_font;
+
+	a {
+		color: #455A64;
+		text-decoration: none;
+		@include bold_font;
+	}
+	&:hover {
+		background: #455A64;
+		color:white;
+	}	
+}
+
+@media only screen and (max-width: 890px) {
+	.button {
+		font-size: 9px;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.button {
+		font-size: 9px;
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	.button {
+		width: 125px;
+		padding-left: 20px;
+		padding-right: 20px;
+		font-size: 12px;
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	.button {
+		width: 110px;
+		padding-left: 15px;
+		padding-right: 15px;
+		font-size: 9px;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.button {
+		width: 85px;
+		padding-left: 8px;
+		padding-right: 8px;
+		font-size: 6.5px;
+	}
+}
+
+a {
+	color: #1f292d;
+	text-decoration: none;
+	&:hover {
+		color: $dark_gray;
+	}
+}
+
+h1{
+  color: #455A64;
+  font-size:30px;
+}
+
+@media only screen and (max-width: 500px) {
+	h1 {
+		font-size: 20px;
+	}
+}
+
+table{
+   margin-bottom:5%;
+}
+
+table, tr{
+     height:70px;
+}
+
+header {
+	background: #455A64;
+	z-index: 100;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height:95px;
+	padding: 1.75rem 0;
+	border-bottom: 5px solid $dark_gray;
+
+	.header_inner {
+		width: 90%;
+		margin: 0 auto;
+		#logo {
+			/*display: inline-block;
+			width: 2.25rem;
+			float: left;*/
+			margin:-19px;
+			display:block;
+		}
+		nav {
+			float: right;
+			margin: 10px auto;
+			margin-top:-3%;
+			
+			a {
+				/*text-decoration: none;*/
+				color: white;
+				font-size: 1.1rem;
+				line-height: 1.5;
+				margin-left: 1rem;
+				font-weight:bold;
+				font-size: 25px;
+				&:hover {
+					color: $light_gray;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 850px) {
+	header .header_inner nav a {
+		font-size: 20px;
+	}
+} 
+
+@media only screen and (max-width: 730px) {
+	header .header_inner nav a {
+		font-size: 15px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	header .header_inner nav a {
+		font-size: 10px;
+	}
+}
+
+
+footer {
+	background: $dark_gray;
+	width: 100%;
+	padding: 2rem 0;
+	color: white;
+	text-align: center;
+	@include bold_font;
+	p {
+		margin: 0;
+		font-size: .85rem;
+	}
+}
+
+input[type="text"], input[type="email"], input[type="password"], textarea {
+	width: 100%;
+	margin-bottom: 1rem;
+	border: 1px solid $light_gray;
+	border-radius: .4rem;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+	height: 40px;
+}
+
+@media only screen and (max-width: 550px) {
+	#note_image {
+		font-size: 13px;
+	}
+} 
+@media only screen and (max-width: 490px) {
+	#note_image {
+		font-size: 10px;
+	}
+} 
+@media only screen and (max-width: 420px) {
+	#note_image {
+		font-size: 7px;
+	}
+} 
+
+textarea {
+	min-height: 200px;
+}
+
+.title_notes {
+	margin-bottom: 30px;
+}
+
+#note {
+		background: #455A64;
+		width: 90%;
+		height:80px;
+		margin: 1rem 1%;
+		margin-top: 30px;
+		margin-left:2%;
+		padding: 0.5rem;
+		float: left;
+		border-radius: .4rem;
+		position: relative;
+			font-weight: bold;
+			color: white;
+			letter-spacing: 1px;
+		a{
+		   color: white;
+		}
+
+	}
+	#belongs {
+		background: #455A64;
+		width: 90%;
+		margin: 1rem 1%;
+		margin-top: 30px;
+		margin-left:2%;
+		padding: 0.5rem;
+		float: left;
+		border-radius: .4rem;
+		position: relative;
+			font-weight: bold;
+			color: white;
+			letter-spacing: 1px;
+		a{
+		   color: white;
+		}
+
+	}
+
+#name {
+	width: 20%;
+	padding-right: 950px;
+}
+
+#name1 {
+	width: 20%;
+	padding-right: 900px;
+}
+
+#bel {
+	padding-right: 1450px;
+}
+
+@media only screen and (max-width: 1800px) {
+	#name {
+	width: 20%;
+	padding-right: 800px;
+	}
+}
+
+@media only screen and (max-width: 1600px) {
+	#name {
+	width: 20%;
+	padding-right: 700px;
+	}
+}
+
+@media only screen and (max-width: 1450px) {
+	#name {
+	width: 20%;
+	padding-right: 600px;
+	}
+}
+
+@media only screen and (max-width: 1300px) {
+	#name {
+	width: 20%;
+	padding-right: 500px;
+	}
+}
+
+@media only screen and (max-width: 1170px) {
+	#name {
+	width: 20%;
+	padding-right: 400px;
+	}
+}
+
+@media only screen and (max-width: 1030px) {
+	#name {
+	width: 20%;
+	padding-right: 300px;
+	}
+}
+
+@media only screen and (max-width: 900px) {
+	#name {
+	width: 20%;
+	padding-right: 200px;
+	}
+}
+
+@media only screen and (max-width: 750px) {
+	#name {
+	width: 20%;
+	padding-right: 100px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	#name {
+	width: 20%;
+	padding-right: 50px;
+	}
+}
+
+
+@media only screen and (max-width: 1800px) {
+	#name1 {
+	width: 20%;
+	padding-right: 750px;
+	}
+}
+
+@media only screen and (max-width: 1600px) {
+	#name1 {
+	width: 20%;
+	padding-right: 650px;
+	}
+}
+
+@media only screen and (max-width: 1450px) {
+	#name1 {
+	width: 20%;
+	padding-right: 550px;
+	}
+}
+
+@media only screen and (max-width: 1300px) {
+	#name1 {
+	width: 20%;
+	padding-right: 450px;
+	}
+}
+
+@media only screen and (max-width: 1170px) {
+	#name1 {
+	width: 20%;
+	padding-right: 300px;
+	}
+}
+
+@media only screen and (max-width: 1030px) {
+	#name1 {
+	width: 20%;
+	padding-right: 250px;
+	}
+}
+
+@media only screen and (max-width: 900px) {
+	#name1 {
+	width: 10%;
+	padding-right: 150px;
+	}
+}
+
+@media only screen and (max-width: 750px) {
+	#name1 {
+	width: 10%;
+	padding-right: 500px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	#name1 {
+	width: 10%;
+	padding-right: 25px;
+	}
+}
+
+
+
+
+@media only screen and (max-width: 1800px) {
+	#bel{
+	width: 20%;
+	padding-right: 1200px;
+	}
+}
+
+@media only screen and (max-width: 1600px) {
+	#bel {
+	width: 20%;
+	padding-right: 1100px;
+	}
+}
+
+@media only screen and (max-width: 1450px) {
+	#bel {
+	width: 20%;
+	padding-right: 950px;
+	}
+}
+
+@media only screen and (max-width: 1300px) {
+	#bel {
+	width: 20%;
+	padding-right: 850px;
+	}
+}
+
+@media only screen and (max-width: 1170px) {
+	#bel {
+	width: 20%;
+	padding-right: 750px;
+	}
+}
+
+@media only screen and (max-width: 1060px) {
+	#bel {
+	width: 20%;
+	padding-right: 600px;
+	}
+}
+
+@media only screen and (max-width: 900px) {
+	#bel {
+	width: 10%;
+	padding-right: 450px;
+	}
+}
+
+@media only screen and (max-width: 750px) {
+	#bel {
+	width: 10%;
+	padding-right: 400px;
+	}
+}
+
+@media only screen and (max-width: 680px) {
+	#bel {
+	width: 10%;
+	padding-right: 300px;
+	}
+}
+
+	@media only screen and (max-width: 570px) {
+	#bel {
+	width: 10%;
+	padding-right: 200px;
+	}
+}
+
