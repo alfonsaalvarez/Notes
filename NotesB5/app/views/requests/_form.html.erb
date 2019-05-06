@@ -12,13 +12,42 @@
 		      </ul>
 		    </div>
 	  <% end %>
-	  <%@list=Array.new %>
-	  <% User.all.each do |user| %>
-		  <% unless user.name == session[:user] %>
-		  <% @list.push user.name %>
-		  <% end %>
-	   <% end %>
-	 
+
+ 	   <%@friends=Array.new %>
+ 	   <% Friendship.all.each do |friendship| %>
+ 	     <% if friendship.user1 == session[:user] %>
+ 	       <% @friends.push friendship.user2 %>
+
+ 	     <% else %>
+ 	       <% if friendship.user2 == session[:user] %>
+ 	         <% @friends.push friendship.user1 %>
+
+ 	       <% end %>
+ 	     <% end %>
+ 	    <% end %>
+
+	    <%@requests=Array.new %>
+	    <% Request.all.each do |request| %>
+	      <% if request.user1 == session[:user] %>
+	        <% @requests.push request.user2 %>
+
+	      <% else %>
+	        <% if request.user2 == session[:user] %>
+	          <% @requests.push request.user1 %>
+
+	        <% end %>
+	      <% end %>
+	     <% end %>
+
+ 	 <%@list=Array.new %>
+ 	 	<% User.all.each do |user| %>
+ 	 	<% if user.name != session[:user] && !@friends.include?(user.name) && !@requests.include?(user.name)%>
+ 	 		<!-- % @list.push params[:user1] % -->
+			<% @list.push user.name %>
+ 	 	<% end %>
+ 	 <% end %>
+
+
 	 <div class="col-xs-12 col-sm-6 col-md-4">
 	      <br><strong> Select an user from the list<strong> <br><br>
 		<%=form.select(:user2, options_for_select(@list)) %>

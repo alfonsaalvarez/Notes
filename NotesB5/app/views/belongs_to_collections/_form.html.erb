@@ -12,6 +12,7 @@
   <% end %>
 
   <%= form.hidden_field :note_collection_id, :name=>"note_collection_id", :value=>1 %>
+  
   <%@list=Array.new %>
   <% Note.all.each do |aux| %>
     <% if aux.user_id == session[:user_id] %>
