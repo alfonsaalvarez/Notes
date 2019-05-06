@@ -22,10 +22,10 @@ get 'resquests/index'
 get 'resquests/new'
 get 'resquests/show'
 
-  resources :belongs_to_collection
-get 'belongs_to_collection/new'
-get 'belongs_to_collection/create'
-get 'belongs_to_collection/destroy'
+  #resources :belongs_to_collection
+get 'belongs_to_collections/new'
+get 'belongs_to_collections/create'
+get 'belongs_to_collections/destroy'
   #resources :notes
   #resources :users
 

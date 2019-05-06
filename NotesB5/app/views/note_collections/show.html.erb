@@ -17,14 +17,21 @@
 
   <p>
   <!-- %= @note_collection.note_collection %-->
-  <% if BelongsToCollection.all.include?(@note_collection.id) %>
+  <% unless BelongsToCollection.blank? %>
     <strong>Notes:</strong>
     <div id="note">
       <% BelongsToCollection.all.each do |belongs| %>
-        <% if @note_collection.user_id == belongs[:user_id]%>
-          <strong> Note user: </strong>
-          <%= belongs[:user_id] %>
-          <%= belongs[:col_id]%>
+        <% if @note_collection.user_id == session[:user_id]%>
+          	<div class="field">
+          	  <p><strong>Note user:  </strong>
+          	  <%= User.find(@note_collection.user_id).name %></p>
+          	</div>
+
+          	<div class="field">
+          	  <p><strong>Title:</strong>
+          	  <br><%= Note.find(belongs.note_id).title %></p>
+          	</div>
+
         <% end %>
       <% end %>
       </div>

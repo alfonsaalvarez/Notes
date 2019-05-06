@@ -25,6 +25,8 @@ class SharedCollectionsController < ApplicationController
   # POST /shared_collections.json
   def create
     @shared_collection = SharedCollection.new(shared_collection_params)
+    @shared_collection.o_user_id = session[:user_id]
+    @shared_collection.note_collection_id=params[:note_collection_id]
 
     respond_to do |format|
       if @shared_collection.save

@@ -11,26 +11,20 @@
     </div>
   <% end %>
 
-  <%= form.hidden_field :col_id, :name=>"col_id", :value=>:col_id%>
+  <%= form.hidden_field :note_collection_id, :name=>"note_collection_id", :value=>1 %>
+  <%@list=Array.new %>
+  <% Note.all.each do |aux| %>
+    <% if aux.user_id == session[:user_id] %>
+      <% @list.push aux %>
+
+   <% end %>
+   <%end%>
+
 
   <div class="col-xs-12 col-sm-6 col-md-4" style="width: 100%;">
-    <% if Note.all.any? %>
-        <!-- % Note.all.each do |note| %>
-        < % if session[:user_id] == note.user_id %>
-            <div class="note">
-        <table>
-          <tr>
-        <td>< %= note.title %></td>
-        <td>< %= link_to '', new_belongs_to_collection_path(col_id: :col_id, note_id: note.id), method: "put", class:"fas fa-plus fa-2x" %></td>
+    <% if @list.any? %>
+        <%=form.select(:note_id, @list.map{|aux| [aux.title, aux.id]})%>
 
-          </tr>
-         </table>
-        </div>
-
-       < % end %>
-        < % end % -->
-        <%=form.select(:note_id, Note.all, { :promt=>"Choose notes"}, { :multiple=>true})%>
-        
     <% else %>
         <div class="row">
           <h2>Add a new note</h2>

@@ -24,15 +24,15 @@
 			<td id="name1"><%= note_collection.name %></td>
 			<td><%= link_to '', note_collection, class:"far fa-eye fa-2x" %></td>
 			<td><%= link_to '', edit_note_collection_path(note_collection), class: "fas fa-edit fa-2x"%></td>
-			<td><%= link_to '', new_belongs_to_collection_path(col_id: note_collection.id), class: "fas fa-plus fa-2x"%></td>
-			<td><%= link_to '', new_shared_collection_path, class: "fas fa-share-alt fa-2x"%></td>
+			<td><%= link_to '', new_belongs_to_collection_path(note_collection_id: note_collection.id), class: "fas fa-plus fa-2x"%></td>
+			<td><%= link_to '', new_shared_collection_path(note_collection_id: note_collection.id), class: "fas fa-share-alt fa-2x"%></td>
 			<td><%= link_to '', note_collection, method: :delete, data: { confirm: 'Are you sure?' }, class:"fas fa-trash-alt fa-2x"%></td>
 		    	</tr>
 			<tr>
        			 <td style="color: black; font-size: 16px;"><%= note_collection.user.name %></td>
              <% BelongsToCollection.all.each do |belongs| %>
               <% if belongs.col_id == note_collection.id %>
-                <td><%= Note.find(params[belongs.note_id]).title %></td>
+                <td><%= Note.find(belongs.note_id).title %></td>
               <% end%>
               <% end %>
 

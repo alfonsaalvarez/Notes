@@ -25,6 +25,7 @@ class BelongsToCollectionsController < ApplicationController
   # POST /belongs_to_collections.json
   def create
     @belongs_to_collection = BelongsToCollection.new(belongs_to_collection_params)
+    @belongs_to_collection.col_id=params[:note_collection_id]
 
     respond_to do |format|
       if @belongs_to_collection.save
